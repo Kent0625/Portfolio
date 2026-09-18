@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#07090e">
+    <meta name="color-scheme" content="dark">
     <title>Kent John U. Macalam | Data Science Portfolio</title>
     <meta name="description" content="Kent John U. Macalam's data science portfolio featuring machine learning, analytics, dashboards, statistics, and AI projects.">
     <link rel="canonical" href="https://kent-macalam-portfolio.onrender.com/">
@@ -22,9 +24,11 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css?v=apple2">
 </head>
 <body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
     <header class="site-header">
         <nav class="nav-shell" aria-label="Primary navigation">
             <ul class="nav-links">
@@ -34,36 +38,36 @@
                 <li class="nav-optional"><a href="#services">Services</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
-            <a class="nav-action" href="assets/documents/Kent_John_Macalam_RESUME.pdf" download="Kent_John_Macalam_RESUME.pdf">
+            <a class="nav-action" href="assets/documents/Kent_John_Macalam_RESUME.pdf" download="Kent_John_Macalam_RESUME.pdf" aria-label="Download Kent John Macalam's Resume PDF">
                 <i class="fa-solid fa-file-arrow-down" aria-hidden="true"></i>
                 Resume
             </a>
         </nav>
     </header>
 
-    <main>
+    <main id="main-content">
         <section id="hero" class="hero-section">
             <div class="hero-layout">
                 <div class="hero-content">
-                    <p class="eyebrow">Data Science Student | Analytics and ML Projects</p>
-                    <h1>Kent John U. Macalam</h1>
+                    <p class="eyebrow">Data Science Student &bull; Analytics &amp; ML Projects</p>
+                    <h1>Kent John U.&nbsp;Macalam</h1>
                     <p class="hero-copy">
                         I turn messy datasets into explainable models, useful dashboards, and decision-ready insights.
                     </p>
                     <div class="keyword-rail" aria-label="Portfolio focus areas">
                         <span class="keyword-label">Focused on</span>
-                        <span class="keyword-text">Data Science, Machine Learning, Dashboards, and AI-powered analytics.</span>
+                        <span class="keyword-text">Data Science, Machine Learning, Dashboards, &amp; AI-powered analytics.</span>
                     </div>
                     <div class="hero-actions" aria-label="Primary actions">
                         <a class="button primary" href="#projects">
                             <i class="fa-solid fa-chart-line" aria-hidden="true"></i>
                             View Projects
                         </a>
-                        <a class="button secondary" href="assets/documents/Kent_John_Macalam_RESUME.pdf" download="Kent_John_Macalam_RESUME.pdf">
+                        <a class="button secondary" href="assets/documents/Kent_John_Macalam_RESUME.pdf" download="Kent_John_Macalam_RESUME.pdf" aria-label="Download Resume PDF">
                             <i class="fa-solid fa-file-pdf" aria-hidden="true"></i>
                             Download Resume
                         </a>
-                        <a class="button ghost" href="https://github.com/Kent0625" target="_blank" rel="noopener">
+                        <a class="button ghost" href="https://github.com/Kent0625" target="_blank" rel="noopener" aria-label="Open Kent's GitHub Profile in a new tab">
                             <i class="fa-brands fa-github" aria-hidden="true"></i>
                             GitHub
                         </a>
@@ -71,18 +75,18 @@
                 </div>
 
                 <div class="hero-visual" aria-label="Data workflow visual">
-                    <div class="signal-panel">
+                    <div class="signal-panel" data-spotlight>
                         <div class="signal-header">
                             <span></span>
                             <span></span>
                             <span></span>
                         </div>
                         <div class="signal-grid">
-                            <span class="signal-node active"></span>
+                            <span class="signal-node active" title="Active Data Ingestion"></span>
                             <span class="signal-line"></span>
-                            <span class="signal-node"></span>
+                            <span class="signal-node" title="Feature Engineering"></span>
                             <span class="signal-line long"></span>
-                            <span class="signal-node active"></span>
+                            <span class="signal-node active" title="Model Inference"></span>
                         </div>
                         <div class="mini-bars" aria-hidden="true">
                             <span style="--height: 58%"></span>
@@ -92,14 +96,14 @@
                             <span style="--height: 92%"></span>
                         </div>
                     </div>
-                    <div class="metric-chip primary-chip">
+                    <div class="metric-chip primary-chip" data-spotlight>
                         <strong>5</strong>
                         <span>case-study steps</span>
                     </div>
                 </div>
             </div>
 
-            <div class="proof-strip" aria-label="Portfolio highlights">
+            <div class="proof-strip" aria-label="Portfolio highlights" data-spotlight>
                 <div>
                     <span>7,352</span>
                     <p>Senate bills modeled after cleaning</p>
@@ -117,7 +121,7 @@
 
         <section class="section-block bento-section" aria-labelledby="snapshot-title">
             <div class="section-heading">
-                <p class="eyebrow">Portfolio snapshot</p>
+                <p class="eyebrow">Portfolio Snapshot</p>
                 <h2 id="snapshot-title">A compact view of my data toolkit</h2>
                 <p>
                     Selected tools, project areas, and proof links.
@@ -125,42 +129,42 @@
             </div>
 
             <div class="bento-grid">
-                <article class="bento-card large">
+                <article class="bento-card large" data-spotlight>
                     <i class="fa-brands fa-python" aria-hidden="true"></i>
-                    <h3>Python analysis</h3>
+                    <h3>Python Analysis</h3>
                     <p>Cleaning, EDA, feature engineering, and model reporting.</p>
                 </article>
-                <article class="bento-card">
+                <article class="bento-card" data-spotlight>
                     <i class="fa-solid fa-database" aria-hidden="true"></i>
-                    <h3>SQL-ready</h3>
+                    <h3>SQL-Ready</h3>
                     <p>Structured data, database thinking, and pipeline workflows.</p>
                 </article>
-                <article class="bento-card accent">
+                <article class="bento-card accent" data-spotlight>
                     <i class="fa-solid fa-brain" aria-hidden="true"></i>
-                    <h3>ML projects</h3>
+                    <h3>ML Projects</h3>
                     <p>Classification, XGBoost, feature importance, and evaluation.</p>
                 </article>
-                <article class="bento-card">
+                <article class="bento-card" data-spotlight>
                     <i class="fa-solid fa-chart-simple" aria-hidden="true"></i>
                     <h3>Dashboards</h3>
                     <p>KPI summaries and decision-focused visuals.</p>
                 </article>
-                <article class="bento-card tall">
+                <article class="bento-card tall" data-spotlight>
                     <i class="fa-solid fa-book-open-reader" aria-hidden="true"></i>
-                    <h3>Research storytelling</h3>
+                    <h3>Research Storytelling</h3>
                     <p>Problem, data, method, result, and impact—clearly explained.</p>
                 </article>
-                <a class="bento-card link-card" href="https://github.com/Kent0625" target="_blank" rel="noopener">
+                <a class="bento-card link-card" href="https://github.com/Kent0625" target="_blank" rel="noopener" aria-label="Explore Kent's GitHub repositories" data-spotlight>
                     <i class="fa-brands fa-github" aria-hidden="true"></i>
                     <h3>GitHub</h3>
                     <p>Selected code and documentation.</p>
                 </a>
-                <a class="bento-card link-card" href="assets/documents/Kent_John_Macalam_RESUME.pdf" download="Kent_John_Macalam_RESUME.pdf">
+                <a class="bento-card link-card" href="assets/documents/Kent_John_Macalam_RESUME.pdf" download="Kent_John_Macalam_RESUME.pdf" aria-label="Download Recruiter-ready PDF Resume" data-spotlight>
                     <i class="fa-solid fa-file-pdf" aria-hidden="true"></i>
                     <h3>Resume</h3>
                     <p>Recruiter-ready PDF.</p>
                 </a>
-                <article class="bento-card accent-alt">
+                <article class="bento-card accent-alt" data-spotlight>
                     <i class="fa-solid fa-handshake-angle" aria-hidden="true"></i>
                     <h3>Available</h3>
                     <p>Open to internships, part-time data roles, and focused project work.</p>
@@ -170,7 +174,7 @@
 
         <section id="projects" class="section-block">
             <div class="section-heading">
-                <p class="eyebrow">Selected work</p>
+                <p class="eyebrow">Selected Work</p>
                 <h2>Projects with practical value</h2>
                 <p>
                     Real questions, documented workflows, and reviewable outputs.
@@ -178,9 +182,9 @@
             </div>
 
             <div class="project-grid">
-                <article class="project-card featured" data-detail-href="projects/life-of-a-bill.html" role="link" tabindex="0" aria-label="Open The Life of a Bill case study">
-                    <a class="project-image" href="projects/life-of-a-bill.html" aria-label="Open The Life of a Bill case study">
-                        <img src="assets/projects/legislative-ml-pubmat.png" alt="Publication material for The Life of a Bill machine learning project">
+                <article class="project-card featured" data-detail-href="projects/life-of-a-bill.html" role="link" tabindex="0" aria-label="Open The Life of a Bill case study" data-spotlight>
+                    <a class="project-image" href="projects/life-of-a-bill.html" tabindex="-1" aria-hidden="true">
+                        <img src="assets/projects/legislative-ml-pubmat.png" alt="Publication material for The Life of a Bill machine learning project" width="1086" height="1448" fetchpriority="high">
                     </a>
                     <div class="project-body">
                         <div class="project-meta">
@@ -210,16 +214,16 @@
                             <span><strong>Result</strong> Progress signals became easier to compare.</span>
                             <span><strong>Impact</strong> Legislative patterns became explainable.</span>
                         </div>
-                        <a class="text-link" href="https://github.com/Kent0625/ML_FINAL_PROJECT" target="_blank" rel="noopener">
+                        <a class="text-link" href="https://github.com/Kent0625/ML_FINAL_PROJECT" target="_blank" rel="noopener" aria-label="View The Life of a Bill repository on GitHub">
                             View GitHub project
                             <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i>
                         </a>
                     </div>
                 </article>
 
-                <article class="project-card featured" data-detail-href="projects/from-farm-to-cup.html" role="link" tabindex="0" aria-label="Open From Farm to Cup case study">
-                    <a class="project-image" href="projects/from-farm-to-cup.html" aria-label="Open From Farm to Cup case study">
-                        <img src="assets/projects/coffee-income-poster.png" alt="Poster for From Farm to Cup bootstrap confidence interval project">
+                <article class="project-card featured" data-detail-href="projects/from-farm-to-cup.html" role="link" tabindex="0" aria-label="Open From Farm to Cup case study" data-spotlight>
+                    <a class="project-image" href="projects/from-farm-to-cup.html" tabindex="-1" aria-hidden="true">
+                        <img src="assets/projects/coffee-income-poster.png" alt="Poster for From Farm to Cup bootstrap confidence interval project" width="1086" height="1448" loading="lazy">
                     </a>
                     <div class="project-body">
                         <div class="project-meta">
@@ -229,7 +233,7 @@
                         </div>
                         <h3><a class="project-title-link" href="projects/from-farm-to-cup.html">From Farm to Cup</a></h3>
                         <p>
-                            Used bootstrap confidence intervals to estimate Bukidnon coffee farmers' income more responsibly when the income distribution is uneven and uncertain.
+                            Used bootstrap confidence intervals to estimate Bukidnon coffee farmers’ income more responsibly when the income distribution is uneven and uncertain.
                         </p>
                         <div class="project-facts" aria-label="From Farm to Cup proof points">
                             <span><strong>Dataset</strong>200 records</span>
@@ -249,16 +253,16 @@
                             <span><strong>Result</strong> Income uncertainty became visible.</span>
                             <span><strong>Impact</strong> Better basis for support decisions.</span>
                         </div>
-                        <a class="text-link" href="https://github.com/Kent0625/bootstrap-coffee-farmers-income" target="_blank" rel="noopener">
+                        <a class="text-link" href="https://github.com/Kent0625/bootstrap-coffee-farmers-income" target="_blank" rel="noopener" aria-label="View From Farm to Cup repository on GitHub">
                             View GitHub project
                             <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i>
                         </a>
                     </div>
                 </article>
 
-                <article class="project-card featured" data-detail-href="projects/smartrip-cdo.html" role="link" tabindex="0" aria-label="Open SmartTripCDO case study">
-                    <a class="project-image" href="projects/smartrip-cdo.html" aria-label="Open SmartTripCDO case study">
-                        <img src="GEN_AI/FINAL%20Research%20Poster%20.png" alt="Research poster for SmartTripCDO static RAG travel itinerary system">
+                <article class="project-card featured" data-detail-href="projects/smartrip-cdo.html" role="link" tabindex="0" aria-label="Open SmartTripCDO case study" data-spotlight>
+                    <a class="project-image" href="projects/smartrip-cdo.html" tabindex="-1" aria-hidden="true">
+                        <img src="GEN_AI/FINAL%20Research%20Poster%20.png" alt="Research poster for SmartTripCDO static RAG travel itinerary system" width="1587" height="2245" loading="lazy">
                     </a>
                     <div class="project-body">
                         <div class="project-meta">
@@ -289,11 +293,11 @@
                             <span><strong>Impact</strong> Zero-cost prototype for regional travel planning.</span>
                         </div>
                         <div class="project-actions">
-                            <a class="text-link" href="https://kent0625-smartrip-cdo.hf.space" target="_blank" rel="noopener">
+                            <a class="text-link" href="https://kent0625-smartrip-cdo.hf.space" target="_blank" rel="noopener" aria-label="Open SmartTripCDO Live App on Hugging Face">
                                 Open Live App
                                 <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i>
                             </a>
-                            <a class="text-link" href="https://github.com/Kent0625/smartrip_cdo" target="_blank" rel="noopener">
+                            <a class="text-link" href="https://github.com/Kent0625/smartrip_cdo" target="_blank" rel="noopener" aria-label="View SmartTripCDO GitHub Source">
                                 View GitHub Source
                                 <i class="fa-brands fa-github" aria-hidden="true"></i>
                             </a>
@@ -301,7 +305,7 @@
                     </div>
                 </article>
 
-                <article class="project-card compact">
+                <article class="project-card compact" data-spotlight>
                     <div class="project-icon">
                         <i class="fa-solid fa-boxes-stacked" aria-hidden="true"></i>
                     </div>
@@ -319,6 +323,7 @@
                             <span><strong>Use case</strong>Monitoring</span>
                             <span><strong>Output</strong>KPI view</span>
                             <span><strong>Logic</strong>Reorder rules</span>
+                            <span><strong>Format</strong>DSS dashboard</span>
                         </div>
                         <ul class="result-list">
                             <li>Designed dashboard-style summaries for inventory monitoring.</li>
@@ -363,7 +368,7 @@
                     </div>
                 </article>
 
-                <article class="project-card compact">
+                <article class="project-card compact" data-spotlight>
                     <div class="project-icon">
                         <i class="fa-solid fa-eye" aria-hidden="true"></i>
                     </div>
@@ -381,6 +386,7 @@
                             <span><strong>Workflow</strong>Image to result</span>
                             <span><strong>Deploy</strong>Flask</span>
                             <span><strong>Device</strong>Raspberry Pi</span>
+                            <span><strong>Output</strong>Screening</span>
                         </div>
                         <ul class="result-list">
                             <li>Designed an AI screening workflow using image processing and structured features.</li>
@@ -415,13 +421,12 @@
                         </details>
                     </div>
                 </article>
-
             </div>
         </section>
 
         <section id="proof" class="section-block proof-work-section" aria-labelledby="proof-title">
             <div class="section-heading">
-                <p class="eyebrow">Work you can review</p>
+                <p class="eyebrow">Work You Can Review</p>
                 <h2 id="proof-title">My work, ready to check quickly</h2>
                 <p>
                     Source code, resume, project range, and availability.
@@ -429,22 +434,22 @@
             </div>
 
             <div class="proof-work-grid">
-                <a class="proof-work-card" href="https://github.com/Kent0625" target="_blank" rel="noopener">
+                <a class="proof-work-card" href="https://github.com/Kent0625" target="_blank" rel="noopener" aria-label="Visit Kent's GitHub repositories" data-spotlight>
                     <i class="fa-brands fa-github" aria-hidden="true"></i>
-                    <h3>GitHub repositories</h3>
+                    <h3>GitHub Repositories</h3>
                     <p>Code and documentation for selected work.</p>
                 </a>
-                <a class="proof-work-card" href="assets/documents/Kent_John_Macalam_RESUME.pdf" download="Kent_John_Macalam_RESUME.pdf">
+                <a class="proof-work-card" href="assets/documents/Kent_John_Macalam_RESUME.pdf" download="Kent_John_Macalam_RESUME.pdf" aria-label="Download Resume PDF" data-spotlight>
                     <i class="fa-solid fa-file-pdf" aria-hidden="true"></i>
                     <h3>Resume PDF</h3>
                     <p>Ready for internship and project applications.</p>
                 </a>
-                <article class="proof-work-card">
+                <article class="proof-work-card" data-spotlight>
                     <i class="fa-solid fa-layer-group" aria-hidden="true"></i>
-                    <h3>Project mix</h3>
+                    <h3>Project Mix</h3>
                     <p>ML, statistics, dashboards, AI, and a deployed app.</p>
                 </article>
-                <article class="proof-work-card">
+                <article class="proof-work-card" data-spotlight>
                     <i class="fa-solid fa-briefcase" aria-hidden="true"></i>
                     <h3>Availability</h3>
                     <p>Open to data, analytics, ML, and reporting work.</p>
@@ -454,28 +459,28 @@
 
         <section id="preview" class="section-block preview-section">
             <div class="section-heading">
-                <p class="eyebrow">Interactive preview</p>
+                <p class="eyebrow">Interactive Preview</p>
                 <h2>How I turn data into a story</h2>
                 <p>
                     Four stages behind my project outputs.
                 </p>
             </div>
 
-            <div class="preview-shell">
+            <div class="preview-shell" data-spotlight>
                 <input class="preview-radio" type="radio" name="preview-tab" id="preview-eda" checked>
                 <input class="preview-radio" type="radio" name="preview-tab" id="preview-model">
                 <input class="preview-radio" type="radio" name="preview-tab" id="preview-dashboard">
                 <input class="preview-radio" type="radio" name="preview-tab" id="preview-insights">
 
                 <div class="preview-tabs" role="tablist" aria-label="Data workflow preview tabs">
-                    <label for="preview-eda" role="tab">EDA</label>
-                    <label for="preview-model" role="tab">Model</label>
-                    <label for="preview-dashboard" role="tab">Dashboard</label>
-                    <label for="preview-insights" role="tab">Insights</label>
+                    <label for="preview-eda" role="tab" id="tab-eda" aria-controls="panel-eda">EDA</label>
+                    <label for="preview-model" role="tab" id="tab-model" aria-controls="panel-model">Model</label>
+                    <label for="preview-dashboard" role="tab" id="tab-dashboard" aria-controls="panel-dashboard">Dashboard</label>
+                    <label for="preview-insights" role="tab" id="tab-insights" aria-controls="panel-insights">Insights</label>
                 </div>
 
                 <div class="preview-panels">
-                    <article class="preview-panel eda-panel">
+                    <article class="preview-panel eda-panel" id="panel-eda" role="tabpanel" aria-labelledby="tab-eda">
                         <div>
                             <span class="preview-kicker">Explore</span>
                             <h3>Start with data quality and patterns.</h3>
@@ -499,10 +504,10 @@
                                 <span>Segments</span>
                             </div>
                         </div>
-                        <strong class="preview-metric">Quality checks -> distributions -> segments</strong>
+                        <strong class="preview-metric">Quality checks &rarr; distributions &rarr; segments</strong>
                     </article>
 
-                    <article class="preview-panel model-panel">
+                    <article class="preview-panel model-panel" id="panel-model" role="tabpanel" aria-labelledby="tab-model">
                         <div>
                             <span class="preview-kicker">Model</span>
                             <h3>Compare models before trusting predictions.</h3>
@@ -520,10 +525,10 @@
                                 <span style="--width: 54%"><em>author</em></span>
                             </div>
                         </div>
-                        <strong class="preview-metric">Baseline -> comparison -> explanation</strong>
+                        <strong class="preview-metric">Baseline &rarr; comparison &rarr; explanation</strong>
                     </article>
 
-                    <article class="preview-panel dashboard-panel">
+                    <article class="preview-panel dashboard-panel" id="panel-dashboard" role="tabpanel" aria-labelledby="tab-dashboard">
                         <div>
                             <span class="preview-kicker">Dashboard</span>
                             <h3>Turn analysis into a useful view.</h3>
@@ -547,10 +552,10 @@
                                 <span>Restock</span>
                             </div>
                         </div>
-                        <strong class="preview-metric">KPI cards -> trends -> status summary</strong>
+                        <strong class="preview-metric">KPI cards &rarr; trends &rarr; status summary</strong>
                     </article>
 
-                    <article class="preview-panel insights-panel">
+                    <article class="preview-panel insights-panel" id="panel-insights" role="tabpanel" aria-labelledby="tab-insights">
                         <div>
                             <span class="preview-kicker">Insights</span>
                             <h3>End with what changed and what to do next.</h3>
@@ -561,7 +566,7 @@
                             <span><strong>Limitation</strong> Validate with newer records.</span>
                             <span><strong>Next step</strong> Turn summary into a dashboard.</span>
                         </div>
-                        <strong class="preview-metric">Recommendation -> limitation -> next step</strong>
+                        <strong class="preview-metric">Recommendation &rarr; limitation &rarr; next step</strong>
                     </article>
                 </div>
             </div>
@@ -577,23 +582,23 @@
             </div>
 
             <div class="skills-grid">
-                <article class="skill-group">
+                <article class="skill-group" data-spotlight>
                     <h3><i class="fa-solid fa-magnifying-glass-chart" aria-hidden="true"></i> Data Analysis</h3>
                     <p>Python, Pandas, data cleaning, exploratory analysis, spreadsheet review, public dataset preparation.</p>
                 </article>
-                <article class="skill-group">
+                <article class="skill-group" data-spotlight>
                     <h3><i class="fa-solid fa-brain" aria-hidden="true"></i> Machine Learning</h3>
                     <p>Scikit-learn, XGBoost, model comparison, feature engineering, classification workflows.</p>
                 </article>
-                <article class="skill-group">
+                <article class="skill-group" data-spotlight>
                     <h3><i class="fa-solid fa-square-root-variable" aria-hidden="true"></i> Statistical Modeling</h3>
                     <p>Bootstrap resampling, confidence intervals, uncertainty reporting, R Markdown analysis.</p>
                 </article>
-                <article class="skill-group">
+                <article class="skill-group" data-spotlight>
                     <h3><i class="fa-solid fa-chart-column" aria-hidden="true"></i> Visualization</h3>
                     <p>Project posters, charts, dashboards, model explanation visuals, presentation-ready summaries.</p>
                 </article>
-                <article class="skill-group">
+                <article class="skill-group" data-spotlight>
                     <h3><i class="fa-solid fa-screwdriver-wrench" aria-hidden="true"></i> Web and Data Tools</h3>
                     <p>SQL, FastAPI basics, GitHub, notebook workflows, static websites, technical documentation.</p>
                 </article>
@@ -602,7 +607,7 @@
 
         <section id="services" class="section-block">
             <div class="section-heading">
-                <p class="eyebrow">For teams and clients</p>
+                <p class="eyebrow">For Teams and Clients</p>
                 <h2>Project work I can help with</h2>
                 <p>
                     Focused data work with clear, documented outputs.
@@ -610,22 +615,22 @@
             </div>
 
             <div class="service-grid">
-                <article class="service-card">
+                <article class="service-card" data-spotlight>
                     <i class="fa-solid fa-broom" aria-hidden="true"></i>
                     <h3>Data Cleaning</h3>
                     <p>Prepare messy files for analysis, reporting, and modeling.</p>
                 </article>
-                <article class="service-card">
+                <article class="service-card" data-spotlight>
                     <i class="fa-solid fa-chart-pie" aria-hidden="true"></i>
-                    <h3>Dashboards and Reports</h3>
+                    <h3>Dashboards &amp; Reports</h3>
                     <p>Build concise visuals and summaries that explain the data.</p>
                 </article>
-                <article class="service-card">
+                <article class="service-card" data-spotlight>
                     <i class="fa-solid fa-robot" aria-hidden="true"></i>
                     <h3>ML Prototypes</h3>
                     <p>Compare predictive models and explain important features.</p>
                 </article>
-                <article class="service-card">
+                <article class="service-card" data-spotlight>
                     <i class="fa-solid fa-scale-balanced" aria-hidden="true"></i>
                     <h3>Statistical Analysis</h3>
                     <p>Estimate uncertainty and communicate limits clearly.</p>
@@ -636,8 +641,8 @@
 
     <footer id="contact" class="site-footer">
         <div class="footer-content">
-            <p class="eyebrow">Open to internships, part-time roles, and project-based work</p>
-            <h2>Available for Data Science Internships, Analytics Projects, and ML Prototype Work.</h2>
+            <p class="eyebrow">Open to internships, part-time roles, &amp; project-based work</p>
+            <h2>Available for Data Science Internships, Analytics Projects, &amp; ML Prototype Work.</h2>
             <div class="availability-list" aria-label="Availability">
                 <span>Data Science Internship</span>
                 <span>Analytics Internship</span>
@@ -645,15 +650,15 @@
                 <span>Dashboard / Reporting Projects</span>
             </div>
             <div class="footer-actions">
-                <a class="button primary" href="mailto:macalam.kentjohn@gmail.com">
+                <a class="button primary" href="mailto:macalam.kentjohn@gmail.com" aria-label="Send an email to Kent John Macalam">
                     <i class="fa-solid fa-envelope" aria-hidden="true"></i>
                     Email Me
                 </a>
-                <a class="button secondary" href="https://github.com/Kent0625" target="_blank" rel="noopener">
+                <a class="button secondary" href="https://github.com/Kent0625" target="_blank" rel="noopener" aria-label="Visit Kent's GitHub Profile">
                     <i class="fa-brands fa-github" aria-hidden="true"></i>
                     GitHub
                 </a>
-                <a class="button secondary" href="https://www.linkedin.com/in/kent-john-macalam-4229a52b3/" target="_blank" rel="noopener">
+                <a class="button secondary" href="https://www.linkedin.com/in/kent-john-macalam-4229a52b3/" target="_blank" rel="noopener" aria-label="Visit Kent's LinkedIn Profile">
                     <i class="fa-brands fa-linkedin" aria-hidden="true"></i>
                     LinkedIn
                 </a>
@@ -661,15 +666,45 @@
         </div>
         <p class="copyright">&copy; 2026 Kent John U. Macalam. Data Science Portfolio.</p>
     </footer>
+
+    <!-- Micro-interactions Script (Apple Design Fluid Feedback) -->
     <script>
+        // 1. Direct Manipulation: 1:1 cursor spotlight tracking
+        const spotlightElements = document.querySelectorAll('[data-spotlight]');
+        spotlightElements.forEach((el) => {
+            el.addEventListener('pointermove', (e) => {
+                const rect = el.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                el.style.setProperty('--mouse-x', `${x}px`);
+                el.style.setProperty('--mouse-y', `${y}px`);
+            });
+        });
+
+        // 2. Interactive 3D tilt on Hero Signal Panel following cursor (§2 Direct Manipulation)
+        const signalPanel = document.querySelector('.signal-panel');
+        if (signalPanel) {
+            const visualContainer = document.querySelector('.hero-visual');
+            visualContainer.addEventListener('pointermove', (e) => {
+                const rect = visualContainer.getBoundingClientRect();
+                const x = (e.clientX - rect.left) / rect.width - 0.5;
+                const y = (e.clientY - rect.top) / rect.height - 0.5;
+                signalPanel.style.transform = `rotateY(${x * 16}deg) rotateX(${-y * 16}deg) scale(1.02)`;
+            });
+
+            visualContainer.addEventListener('pointerleave', () => {
+                signalPanel.style.transform = '';
+            });
+        }
+
+        // 3. Project Card Navigation with Keyboard and Click Support
         document.querySelectorAll('[data-detail-href]').forEach((card) => {
             const destination = card.dataset.detailHref;
 
             card.addEventListener('click', (event) => {
-                if (event.target.closest('a, button, summary')) {
+                if (event.target.closest('a, button, summary, details')) {
                     return;
                 }
-
                 window.location.href = destination;
             });
 

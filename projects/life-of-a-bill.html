@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#07090e">
+    <meta name="color-scheme" content="dark">
     <title>The Life of a Bill | Kent John U. Macalam</title>
     <meta name="description" content="A machine learning case study predicting Philippine Senate bill status with XGBoost and explainable legislative signals.">
     <link rel="canonical" href="https://kent-macalam-portfolio.onrender.com/projects/life-of-a-bill.html">
@@ -22,23 +24,25 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../style.css?v=apple2">
 </head>
 <body class="case-study-page">
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
     <header class="case-header">
         <nav class="case-nav" aria-label="Case study navigation">
-            <a class="case-back" href="../index.html#projects">
+            <a class="case-back" href="../index.html#projects" aria-label="Return to selected work projects list">
                 <i class="fa-solid fa-arrow-left" aria-hidden="true"></i>
-                Back to projects
+                Back to Projects
             </a>
-            <a class="nav-action" href="https://kent0625-life-of-a-bill.hf.space" target="_blank" rel="noopener">
+            <a class="nav-action" href="https://kent0625-life-of-a-bill.hf.space" target="_blank" rel="noopener" aria-label="Open live model space on Hugging Face">
                 <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i>
                 Live Model
             </a>
         </nav>
     </header>
 
-    <main class="case-main">
+    <main class="case-main" id="main-content">
         <section class="case-hero">
             <div class="case-hero-copy">
                 <p class="eyebrow">Machine Learning Case Study</p>
@@ -51,31 +55,31 @@
                         <i class="fa-solid fa-play" aria-hidden="true"></i>
                         Try Live Model
                     </a>
-                    <a class="button secondary" href="https://github.com/Kent0625/ML_FINAL_PROJECT" target="_blank" rel="noopener">
+                    <a class="button secondary" href="https://github.com/Kent0625/ML_FINAL_PROJECT" target="_blank" rel="noopener" aria-label="View machine learning source repository on GitHub">
                         <i class="fa-brands fa-github" aria-hidden="true"></i>
                         View Source
                     </a>
                 </div>
             </div>
-            <div class="case-metrics" aria-label="The Life of a Bill metrics">
+            <div class="case-metrics" aria-label="The Life of a Bill metrics" data-spotlight>
                 <span><strong>7,352</strong>bill records</span>
                 <span><strong>XGBoost</strong>selected model</span>
                 <span><strong>0.51</strong>holdout macro F1</span>
             </div>
         </section>
 
-        <section class="case-live-demo" id="live-model" aria-labelledby="live-model-title">
+        <section class="case-live-demo" id="live-model" aria-labelledby="live-model-title" data-spotlight>
             <div class="case-live-heading">
                 <div>
-                    <p class="eyebrow">Interactive model</p>
+                    <p class="eyebrow">Interactive Model</p>
                     <h2 id="live-model-title">Evaluate a bill scenario</h2>
                     <p>
                         Enter policy keywords and legislative context to compare the model's probabilities for First Reading, Second Reading, and Approved. The result is a historical pattern estimate, not a legal or policy forecast.
                     </p>
                 </div>
-                <a class="button secondary case-live-action" href="https://kent0625-life-of-a-bill.hf.space" target="_blank" rel="noopener">
+                <a class="button secondary case-live-action" href="https://kent0625-life-of-a-bill.hf.space" target="_blank" rel="noopener" aria-label="Open model demo full-screen in a new tab">
                     <i class="fa-solid fa-expand" aria-hidden="true"></i>
-                    Open full-screen
+                    Open Full-Screen
                 </a>
             </div>
             <div class="case-live-frame-shell">
@@ -94,11 +98,11 @@
         </section>
 
         <section class="case-proof-grid">
-            <a class="case-visual" href="https://github.com/Kent0625/ML_FINAL_PROJECT" target="_blank" rel="noopener" aria-label="Open The Life of a Bill proof on GitHub">
-                <img src="../assets/projects/legislative-ml-pubmat.png" alt="The Life of a Bill machine learning project poster">
+            <a class="case-visual" href="https://github.com/Kent0625/ML_FINAL_PROJECT" target="_blank" rel="noopener" aria-label="Open The Life of a Bill proof on GitHub" data-spotlight>
+                <img src="../assets/projects/legislative-ml-pubmat.png" alt="The Life of a Bill machine learning project poster" width="1086" height="1448" loading="lazy">
             </a>
-            <div class="case-summary">
-                <p class="eyebrow">Project focus</p>
+            <div class="case-summary" data-spotlight>
+                <p class="eyebrow">Project Focus</p>
                 <h2>Full Content</h2>
                 <p>
                     This project turns historical Senate bill records into a classification workflow. The case study highlights the problem, data preparation, model comparison, result interpretation, and value of explaining why many bills remain early in the legislative process.
@@ -107,31 +111,31 @@
         </section>
 
         <section class="case-section-grid" aria-label="The Life of a Bill case study details">
-            <article class="case-panel">
+            <article class="case-panel" data-spotlight>
                 <h2>Problem</h2>
                 <p>
                     Many bills are filed in the Senate, but only a small portion move forward. The project asks whether historical bill attributes can help predict status and reveal common progress patterns.
                 </p>
             </article>
-            <article class="case-panel">
+            <article class="case-panel" data-spotlight>
                 <h2>Data</h2>
                 <p>
                     The dataset contains 7,352 Senate bill records from the 15th to 18th Congress. Records were cleaned, structured, and prepared for modeling with legislative features.
                 </p>
             </article>
-            <article class="case-panel">
+            <article class="case-panel" data-spotlight>
                 <h2>Method</h2>
                 <p>
                     The workflow used Python, feature engineering, model comparison, and XGBoost classification. The project also emphasized explainability through model signals and feature interpretation.
                 </p>
             </article>
-            <article class="case-panel">
+            <article class="case-panel" data-spotlight>
                 <h2>Result</h2>
                 <p>
                     XGBoost was selected as the main model for structured prediction. The output made it easier to compare status signals across filing context, policy area, and legislative movement.
                 </p>
             </article>
-            <article class="case-panel case-panel-wide">
+            <article class="case-panel case-panel-wide" data-spotlight>
                 <h2>Impact</h2>
                 <p>
                     The project shows how machine learning can support legislative analysis by turning a large public record set into a clearer, evidence-based story about bill progress.
@@ -139,7 +143,7 @@
             </article>
         </section>
 
-        <section class="case-evidence" aria-label="The Life of a Bill tools and evidence">
+        <section class="case-evidence" aria-label="The Life of a Bill tools and evidence" data-spotlight>
             <div>
                 <strong>Tools</strong>
                 <span>Python, Pandas, scikit-learn, XGBoost</span>
@@ -154,5 +158,16 @@
             </div>
         </section>
     </main>
+
+    <script>
+        // Spotlight interaction
+        document.querySelectorAll('[data-spotlight]').forEach((el) => {
+            el.addEventListener('pointermove', (e) => {
+                const rect = el.getBoundingClientRect();
+                el.style.setProperty('--mouse-x', `${e.clientX - rect.left}px`);
+                el.style.setProperty('--mouse-y', `${e.clientY - rect.top}px`);
+            });
+        });
+    </script>
 </body>
 </html>
