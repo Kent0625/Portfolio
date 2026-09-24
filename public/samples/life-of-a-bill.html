@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Life of a Bill — Machine Learning Legislative Classifier</title>
+  <style>
+    :root {
+      --bg: #07090e;
+      --card: rgba(18, 24, 38, 0.7);
+      --border: rgba(255, 255, 255, 0.1);
+      --accent: #8b5cf6;
+      --accent-glow: rgba(139, 92, 246, 0.25);
+      --text: #f1f5f9;
+      --muted: #94a3b8;
+      --font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Inter, sans-serif;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font);
+      line-height: 1.6;
+      padding: 32px 24px;
+      min-height: 100vh;
+    }
+    .container { max-width: 960px; margin: 0 auto; }
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      background: rgba(139, 92, 246, 0.15);
+      color: #c4b5fd;
+      border: 1px solid rgba(139, 92, 246, 0.3);
+      margin-bottom: 12px;
+    }
+    h1 { font-size: 32px; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 8px; }
+    p.subtitle { color: var(--muted); font-size: 16px; margin-bottom: 28px; }
+    .grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: 24px; }
+    @media (max-width: 768px) { .grid { grid-template-columns: 1fr; } }
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 24px;
+      backdrop-filter: blur(16px);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+    }
+    .card h2 { font-size: 18px; margin-bottom: 16px; display: flex; align-items: center; justify-content: space-between; }
+    .metric-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 24px; }
+    .metric-box {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 14px;
+      text-align: center;
+    }
+    .metric-val { font-size: 24px; font-weight: 700; color: #a78bfa; font-variant-numeric: tabular-nums; }
+    .metric-lbl { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.05em; margin-top: 2px; }
+    .form-group { margin-bottom: 16px; }
+    label { display: block; font-size: 13px; font-weight: 500; color: var(--muted); margin-bottom: 6px; }
+    select, input {
+      width: 100%;
+      background: rgba(15, 23, 42, 0.8);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 10px 14px;
+      color: #fff;
+      font-size: 14px;
+      outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    select:focus, input:focus { border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-glow); }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      width: 100%;
+      background: linear-gradient(135deg, #8b5cf6, #6366f1);
+      color: #fff;
+      font-weight: 600;
+      font-size: 14px;
+      padding: 12px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: transform 0.15s, opacity 0.2s;
+    }
+    .btn:active { transform: scale(0.98); }
+    .prob-bar { margin-top: 14px; }
+    .prob-label { display: flex; justify-content: space-between; font-size: 13px; margin-bottom: 4px; }
+    .bar-bg { background: rgba(255, 255, 255, 0.08); height: 8px; border-radius: 4px; overflow: hidden; }
+    .bar-fill { height: 100%; background: var(--accent); border-radius: 4px; transition: width 0.5s ease; }
+    .bar-fill.warning { background: #f59e0b; }
+    .bar-fill.success { background: #10b981; }
+    .tags { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 16px; }
+    .tag { font-size: 12px; background: rgba(255, 255, 255, 0.05); padding: 4px 10px; border-radius: 6px; color: var(--muted); }
+    .actions { display: flex; gap: 12px; margin-top: 24px; }
+    .link-btn {
+      padding: 10px 18px;
+      border-radius: 8px;
+      font-size: 13px;
+      text-decoration: none;
+      font-weight: 500;
+      background: rgba(255, 255, 255, 0.06);
+      color: #fff;
+      border: 1px solid var(--border);
+      transition: background 0.2s;
+    }
+    .link-btn:hover { background: rgba(255, 255, 255, 0.12); }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="badge">Machine Learning Case Study</div>
+    <h1>The Life of a Bill</h1>
+    <p class="subtitle">Predicting Philippine Senate legislative progress across 7,352 bills (15th–18th Congress) with XGBoost.</p>
+
+    <div class="metric-row">
+      <div class="metric-box">
+        <div class="metric-val">7,352</div>
+        <div class="metric-lbl">Bills Cleaned</div>
+      </div>
+      <div class="metric-box">
+        <div class="metric-val">0.51</div>
+        <div class="metric-lbl">Macro F1 Score</div>
+      </div>
+      <div class="metric-box">
+        <div class="metric-val">XGBoost</div>
+        <div class="metric-lbl">Champion Model</div>
+      </div>
+    </div>
+
+    <div class="grid">
+      <div class="card">
+        <h2>Interactive Scenario Classifier</h2>
+        <form id="simForm" onsubmit="runSimulation(event)">
+          <div class="form-group">
+            <label for="committee">Primary Committee Referral</label>
+            <select id="committee">
+              <option value="finance">Finance / Ways & Means (Priority)</option>
+              <option value="rules">Rules / Oversight</option>
+              <option value="education">Basic Education, Arts & Culture</option>
+              <option value="health">Health & Demography</option>
+              <option value="general">General Administration</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="congress">Filing Congress</label>
+            <select id="congress">
+              <option value="18">18th Congress (2019–2022)</option>
+              <option value="17">17th Congress (2016–2019)</option>
+              <option value="16">16th Congress (2013–2016)</option>
+              <option value="15">15th Congress (2010–2013)</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="sponsors">Co-Sponsors & Authors</label>
+            <input type="number" id="sponsors" min="1" max="24" value="3">
+          </div>
+          <button type="submit" class="btn">Calculate Predicted Trajectory</button>
+        </form>
+
+        <div style="margin-top: 20px;">
+          <div class="prob-bar">
+            <div class="prob-label"><span>First Reading (Stalled)</span><span id="pFirst">78%</span></div>
+            <div class="bar-bg"><div class="bar-fill warning" id="bFirst" style="width: 78%;"></div></div>
+          </div>
+          <div class="prob-bar">
+            <div class="prob-label"><span>Second Reading (In Review)</span><span id="pSecond">16%</span></div>
+            <div class="bar-bg"><div class="bar-fill" id="bSecond" style="width: 16%;"></div></div>
+          </div>
+          <div class="prob-bar">
+            <div class="prob-label"><span>Approved / Enacted</span><span id="pApproved">6%</span></div>
+            <div class="bar-bg"><div class="bar-fill success" id="bApproved" style="width: 6%;"></div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>Key Model Findings</h2>
+        <p style="font-size: 14px; color: var(--muted); margin-bottom: 16px;">
+          Empirical analysis reveals that over 82% of all filed bills remain in First Reading committee dormancy due to legislative congestion.
+        </p>
+
+        <h3 style="font-size: 14px; margin-bottom: 8px;">Top Predictive Signals:</h3>
+        <div class="prob-bar">
+          <div class="prob-label"><span>Committee Influence</span><span>38%</span></div>
+          <div class="bar-bg"><div class="bar-fill" style="width: 38%;"></div></div>
+        </div>
+        <div class="prob-bar">
+          <div class="prob-label"><span>Filing Window / Timing</span><span>29%</span></div>
+          <div class="bar-bg"><div class="bar-fill" style="width: 29%;"></div></div>
+        </div>
+        <div class="prob-bar">
+          <div class="prob-label"><span>Author Seniority & Cohort</span><span>21%</span></div>
+          <div class="bar-bg"><div class="bar-fill" style="width: 21%;"></div></div>
+        </div>
+        <div class="prob-bar">
+          <div class="prob-label"><span>Textual Scope / Complexity</span><span>12%</span></div>
+          <div class="bar-bg"><div class="bar-fill" style="width: 12%;"></div></div>
+        </div>
+
+        <div class="tags">
+          <span class="tag">Scikit-Learn</span>
+          <span class="tag">XGBoost</span>
+          <span class="tag">Pandas</span>
+          <span class="tag">NLP</span>
+          <span class="tag">EDA</span>
+        </div>
+
+        <div class="actions">
+          <a class="link-btn" href="https://kent0625-life-of-a-bill.hf.space" target="_blank" rel="noopener">Open Live Space ↗</a>
+          <a class="link-btn" href="https://github.com/Kent0625/ML_FINAL_PROJECT" target="_blank" rel="noopener">GitHub Code ↗</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function runSimulation(e) {
+      e.preventDefault();
+      const comm = document.getElementById('committee').value;
+      const sponsors = parseInt(document.getElementById('sponsors').value, 10);
+      
+      let pApp = 5 + (sponsors * 1.8);
+      if (comm === 'finance') pApp += 14;
+      if (comm === 'rules') pApp += 9;
+      
+      let pSec = 14 + (sponsors * 1.2);
+      if (comm === 'health') pSec += 12;
+      
+      pApp = Math.min(Math.max(pApp, 2), 45);
+      pSec = Math.min(Math.max(pSec, 8), 45);
+      let pFst = Math.max(100 - pApp - pSec, 10);
+
+      document.getElementById('pFirst').textContent = Math.round(pFst) + '%';
+      document.getElementById('bFirst').style.width = pFst + '%';
+      document.getElementById('pSecond').textContent = Math.round(pSec) + '%';
+      document.getElementById('bSecond').style.width = pSec + '%';
+      document.getElementById('pApproved').textContent = Math.round(pApp) + '%';
+      document.getElementById('bApproved').style.width = pApp + '%';
+    }
+  </script>
+</body>
+</html>

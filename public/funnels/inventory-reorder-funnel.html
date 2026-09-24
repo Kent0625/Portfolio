@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Inventory Reorder DSS Funnel</title>
+  <style>
+    :root {
+      --bg: #0b0f19;
+      --card: rgba(22, 30, 49, 0.85);
+      --border: rgba(255, 255, 255, 0.1);
+      --accent: #f59e0b;
+      --text: #f8fafc;
+      --muted: #94a3b8;
+      --font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      padding: 24px;
+    }
+    .funnel-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 36px 32px;
+      max-width: 480px;
+      width: 100%;
+      text-align: center;
+      backdrop-filter: blur(20px);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+    }
+    .badge {
+      display: inline-block;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      background: rgba(245, 158, 11, 0.2);
+      color: #fcd34d;
+      margin-bottom: 16px;
+    }
+    h1 { font-size: 24px; font-weight: 700; margin-bottom: 8px; }
+    p { color: var(--muted); font-size: 14px; margin-bottom: 24px; }
+    input, select {
+      width: 100%;
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 12px 16px;
+      color: #fff;
+      font-size: 14px;
+      margin-bottom: 12px;
+      outline: none;
+    }
+    .btn {
+      width: 100%;
+      background: linear-gradient(135deg, #f59e0b, #d97706);
+      color: #fff;
+      font-weight: 600;
+      font-size: 15px;
+      padding: 14px;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      margin-top: 8px;
+    }
+    .btn:active { transform: scale(0.98); }
+    .success-msg { display: none; margin-top: 16px; color: #fbbf24; font-size: 14px; font-weight: 500; }
+  </style>
+</head>
+<body>
+  <div class="funnel-card">
+    <div class="badge">Operations DSS</div>
+    <h1>Safety Stock &amp; Reorder Calculator</h1>
+    <p>Simulate reorder point triggers based on lead-time variability and target service level.</p>
+
+    <form onsubmit="handleSubmit(event)">
+      <input type="text" placeholder="SKU / Category Name" required>
+      <select>
+        <option>95% Service Level (Standard)</option>
+        <option>99% Service Level (Critical Hospital / Pharma)</option>
+        <option>90% Service Level (Fast Moving Consumer Goods)</option>
+      </select>
+      <input type="email" placeholder="Your Work Email" required>
+      <button type="submit" class="btn">Calculate Safety Buffer</button>
+    </form>
+    <div class="success-msg" id="msg">✓ Reorder threshold calculated! Policy rule generated.</div>
+  </div>
+
+  <script>
+    function handleSubmit(e) {
+      e.preventDefault();
+      document.getElementById('msg').style.display = 'block';
+    }
+  </script>
+</body>
+</html>

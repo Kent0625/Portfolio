@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Inventory Decision Support System (DSS)</title>
+  <style>
+    :root {
+      --bg: #07090e;
+      --card: rgba(18, 24, 38, 0.7);
+      --border: rgba(255, 255, 255, 0.1);
+      --accent: #f59e0b;
+      --accent-glow: rgba(245, 158, 11, 0.25);
+      --text: #f1f5f9;
+      --muted: #94a3b8;
+      --font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Inter, sans-serif;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font);
+      line-height: 1.6;
+      padding: 32px 24px;
+      min-height: 100vh;
+    }
+    .container { max-width: 960px; margin: 0 auto; }
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      background: rgba(245, 158, 11, 0.15);
+      color: #fcd34d;
+      border: 1px solid rgba(245, 158, 11, 0.3);
+      margin-bottom: 12px;
+    }
+    h1 { font-size: 32px; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 8px; }
+    p.subtitle { color: var(--muted); font-size: 16px; margin-bottom: 28px; }
+    .metric-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-bottom: 24px; }
+    @media (max-width: 768px) { .metric-row { grid-template-columns: repeat(2, 1fr); } }
+    .metric-box {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 14px;
+      text-align: center;
+    }
+    .metric-val { font-size: 24px; font-weight: 700; color: #fbbf24; font-variant-numeric: tabular-nums; }
+    .metric-lbl { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.05em; margin-top: 2px; }
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 24px;
+      backdrop-filter: blur(16px);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+      margin-bottom: 24px;
+    }
+    .table-responsive { overflow-x: auto; }
+    table { width: 100%; border-collapse: collapse; font-size: 13px; }
+    th, td { padding: 12px 14px; text-align: left; border-bottom: 1px solid var(--border); }
+    th { color: var(--muted); font-weight: 500; font-size: 12px; text-transform: uppercase; }
+    td { font-variant-numeric: tabular-nums; }
+    .status-pill {
+      display: inline-block;
+      padding: 3px 8px;
+      border-radius: 999px;
+      font-size: 11px;
+      font-weight: 600;
+    }
+    .status-healthy { background: rgba(16, 185, 129, 0.2); color: #34d399; }
+    .status-warning { background: rgba(245, 158, 11, 0.2); color: #fbbf24; }
+    .status-critical { background: rgba(239, 68, 68, 0.2); color: #f87171; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="badge">Business Analytics &amp; Operations</div>
+    <h1>Inventory Decision Support System</h1>
+    <p class="subtitle">Real-time stock health diagnostics, dynamic safety stock reorder triggers, and turnover tracking.</p>
+
+    <div class="metric-row">
+      <div class="metric-box">
+        <div class="metric-val">86%</div>
+        <div class="metric-lbl">Stock Health</div>
+      </div>
+      <div class="metric-box">
+        <div class="metric-val">12</div>
+        <div class="metric-lbl">Reorder Alerts</div>
+      </div>
+      <div class="metric-box">
+        <div class="metric-val">4.2x</div>
+        <div class="metric-lbl">Turnover Rate</div>
+      </div>
+      <div class="metric-box">
+        <div class="metric-val">142</div>
+        <div class="metric-lbl">Monitored SKUs</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2 style="font-size: 18px; margin-bottom: 16px;">Active SKU Reorder Ledger</h2>
+      <div class="table-responsive">
+        <table>
+          <thead>
+            <tr>
+              <th>SKU Code</th>
+              <th>Category</th>
+              <th>Current Stock</th>
+              <th>Safety Min</th>
+              <th>Lead Time</th>
+              <th>Decision Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>SKU-1092</strong></td>
+              <td>Raw Materials</td>
+              <td>14 units</td>
+              <td>50 units</td>
+              <td>3 days</td>
+              <td><span class="status-pill status-critical">TRIGGER REORDER</span></td>
+            </tr>
+            <tr>
+              <td><strong>SKU-2041</strong></td>
+              <td>Packaging</td>
+              <td>85 units</td>
+              <td>100 units</td>
+              <td>5 days</td>
+              <td><span class="status-pill status-warning">MONITOR CLOSELY</span></td>
+            </tr>
+            <tr>
+              <td><strong>SKU-3199</strong></td>
+              <td>Finished Goods</td>
+              <td>420 units</td>
+              <td>150 units</td>
+              <td>2 days</td>
+              <td><span class="status-pill status-healthy">STABLE / SUFFICIENT</span></td>
+            </tr>
+            <tr>
+              <td><strong>SKU-4105</strong></td>
+              <td>Consumables</td>
+              <td>28 units</td>
+              <td>60 units</td>
+              <td>4 days</td>
+              <td><span class="status-pill status-critical">TRIGGER REORDER</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

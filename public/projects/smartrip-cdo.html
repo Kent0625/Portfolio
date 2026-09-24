@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#07090e">
+    <meta name="color-scheme" content="dark">
+    <title>SmartTripCDO | Kent John U. Macalam</title>
+    <meta name="description" content="A deployed Streamlit and static RAG case study generating grounded Cagayan de Oro travel itineraries from curated local data.">
+    <link rel="canonical" href="https://kent-macalam-portfolio.onrender.com/projects/smartrip-cdo.html">
+    <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+
+    <meta property="og:title" content="SmartTripCDO | Generative AI Case Study">
+    <meta property="og:description" content="Explore a deployed travel-planning prototype grounded in 47 curated Cagayan de Oro points of interest.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://kent-macalam-portfolio.onrender.com/projects/smartrip-cdo.html">
+    <meta property="og:image" content="https://kent-macalam-portfolio.onrender.com/GEN_AI/FINAL%20Research%20Poster%20.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="SmartTripCDO | Generative AI Case Study">
+    <meta name="twitter:description" content="Explore a deployed travel-planning prototype grounded in 47 curated Cagayan de Oro points of interest.">
+    <meta name="twitter:image" content="https://kent-macalam-portfolio.onrender.com/GEN_AI/FINAL%20Research%20Poster%20.png">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../style.css?v=apple2">
+</head>
+<body class="case-study-page">
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <header class="case-header">
+        <nav class="case-nav" aria-label="Case study navigation">
+            <a class="case-back" href="../index.html#projects" aria-label="Return to selected work projects list">
+                <i class="fa-solid fa-arrow-left" aria-hidden="true"></i>
+                Back to Projects
+            </a>
+            <a class="nav-action" href="https://kent0625-smartrip-cdo.hf.space" target="_blank" rel="noopener" aria-label="Open live application on Hugging Face">
+                <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i>
+                Live App
+            </a>
+        </nav>
+    </header>
+
+    <main class="case-main" id="main-content">
+        <section class="case-hero">
+            <div class="case-hero-copy">
+                <p class="eyebrow">GenAI Case Study</p>
+                <h1>SmartTripCDO</h1>
+                <p>
+                    A deployed Streamlit travel assistant for Cagayan de Oro that uses a curated local attractions dataset and static RAG-style prompting to generate grounded itineraries.
+                </p>
+                <div class="case-actions">
+                    <a class="button primary" href="#live-app">
+                        <i class="fa-solid fa-play" aria-hidden="true"></i>
+                        Try Live App
+                    </a>
+                    <a class="button secondary" href="https://github.com/Kent0625/smartrip_cdo" target="_blank" rel="noopener" aria-label="View SmartTripCDO GitHub source">
+                        <i class="fa-brands fa-github" aria-hidden="true"></i>
+                        GitHub Source
+                    </a>
+                </div>
+            </div>
+            <div class="case-metrics" aria-label="SmartTripCDO metrics" data-spotlight>
+                <span><strong>47</strong>local POIs</span>
+                <span><strong>0%</strong>hallucination in controlled tests</span>
+                <span><strong>76.32%</strong>clustering efficiency</span>
+            </div>
+        </section>
+
+        <section class="case-live-demo" id="live-app" aria-labelledby="live-app-title" data-spotlight>
+            <div class="case-live-heading">
+                <div>
+                    <p class="eyebrow">Interactive App</p>
+                    <h2 id="live-app-title">Build a Cagayan de Oro itinerary</h2>
+                    <p>
+                        Enter a budget, available time, group type, and interests to evaluate how SmartTripCDO filters its curated local dataset and creates a grounded travel plan.
+                    </p>
+                </div>
+                <a class="button secondary case-live-action" href="https://kent0625-smartrip-cdo.hf.space" target="_blank" rel="noopener" aria-label="Open full-screen application demo in a new tab">
+                    <i class="fa-solid fa-expand" aria-hidden="true"></i>
+                    Open Full-Screen
+                </a>
+            </div>
+            <div class="case-live-frame-shell">
+                <iframe
+                    class="case-live-frame"
+                    src="https://kent0625-smartrip-cdo.hf.space/?embed=true"
+                    title="Interactive SmartTripCDO travel planner"
+                    loading="eager"
+                    allow="clipboard-write"
+                    referrerpolicy="strict-origin-when-cross-origin"
+                ></iframe>
+            </div>
+            <p class="case-live-note">
+                The free Hugging Face Space may take a moment to wake after a period of inactivity.
+            </p>
+        </section>
+
+        <section class="case-proof-grid">
+            <a class="case-visual" href="https://kent0625-smartrip-cdo.hf.space" target="_blank" rel="noopener" aria-label="Open SmartTripCDO deployed app" data-spotlight>
+                <img src="../GEN_AI/FINAL%20Research%20Poster%20.png" alt="SmartTripCDO static RAG travel itinerary research poster" width="1587" height="2245" loading="lazy">
+            </a>
+            <div class="case-summary" data-spotlight>
+                <p class="eyebrow">Project Focus</p>
+                <h2>Full Content</h2>
+                <p>
+                    This project shows how a zero-cost local tourism prototype can use curated data, deterministic filtering, and prompt engineering to generate itinerary suggestions without relying on expensive external APIs.
+                </p>
+            </div>
+        </section>
+
+        <section class="case-section-grid" aria-label="SmartTripCDO case study details">
+            <article class="case-panel" data-spotlight>
+                <h2>Problem</h2>
+                <p>
+                    Travel itinerary platforms often require dynamic APIs and commercial data access. The project asks whether a curated local database can still produce useful, grounded itinerary recommendations.
+                </p>
+            </article>
+            <article class="case-panel" data-spotlight>
+                <h2>Data</h2>
+                <p>
+                    SmartTripCDO uses a manually curated dataset of 47 Cagayan de Oro points of interest, including location context and travel-planning attributes.
+                </p>
+            </article>
+            <article class="case-panel" data-spotlight>
+                <h2>Method</h2>
+                <p>
+                    The system uses a three-stage static RAG workflow: preference extraction, deterministic filtering with pandas, and grounded itinerary generation through prompt engineering.
+                </p>
+            </article>
+            <article class="case-panel" data-spotlight>
+                <h2>Result</h2>
+                <p>
+                    In the controlled project evaluation, the test prompts reported 0% hallucination and 76.32% clustering efficiency. These figures describe the project's test setup, not a production guarantee.
+                </p>
+            </article>
+            <article class="case-panel case-panel-wide" data-spotlight>
+                <h2>Impact</h2>
+                <p>
+                    The prototype gives resource-constrained local tourism teams a practical template for AI-assisted itinerary planning without expensive APIs or complex solvers.
+                </p>
+            </article>
+        </section>
+
+        <section class="case-evidence" aria-label="SmartTripCDO tools and evidence" data-spotlight>
+            <div>
+                <strong>Tools</strong>
+                <span>Streamlit, Python, pandas, Gemini prompting</span>
+            </div>
+            <div>
+                <strong>Evidence</strong>
+                <span>Embedded live app, research poster, GitHub source</span>
+            </div>
+            <div>
+                <strong>Role</strong>
+                <span>Dataset curation, RAG workflow, deployment</span>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        // Spotlight interaction
+        document.querySelectorAll('[data-spotlight]').forEach((el) => {
+            el.addEventListener('pointermove', (e) => {
+                const rect = el.getBoundingClientRect();
+                el.style.setProperty('--mouse-x', `${e.clientX - rect.left}px`);
+                el.style.setProperty('--mouse-y', `${e.clientY - rect.top}px`);
+            });
+        });
+    </script>
+</body>
+</html>

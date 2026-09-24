@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>E-Eye Screening Concept — Edge AI Retinal Classifier</title>
+  <style>
+    :root {
+      --bg: #07090e;
+      --card: rgba(18, 24, 38, 0.7);
+      --border: rgba(255, 255, 255, 0.1);
+      --accent: #ec4899;
+      --accent-glow: rgba(236, 72, 153, 0.25);
+      --text: #f1f5f9;
+      --muted: #94a3b8;
+      --font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Inter, sans-serif;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font);
+      line-height: 1.6;
+      padding: 32px 24px;
+      min-height: 100vh;
+    }
+    .container { max-width: 960px; margin: 0 auto; }
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      background: rgba(236, 72, 153, 0.15);
+      color: #f472b6;
+      border: 1px solid rgba(236, 72, 153, 0.3);
+      margin-bottom: 12px;
+    }
+    h1 { font-size: 32px; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 8px; }
+    p.subtitle { color: var(--muted); font-size: 16px; margin-bottom: 28px; }
+    .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+    @media (max-width: 768px) { .grid { grid-template-columns: 1fr; } }
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 24px;
+      backdrop-filter: blur(16px);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+    }
+    .scan-box {
+      width: 100%;
+      height: 220px;
+      background: radial-gradient(circle at center, #1e1b4b 0%, #090d16 100%);
+      border: 2px dashed rgba(236, 72, 153, 0.4);
+      border-radius: 12px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+      margin-bottom: 16px;
+    }
+    .scan-line {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: #ec4899;
+      box-shadow: 0 0 10px #ec4899;
+      animation: scanAnim 2.5s infinite linear;
+    }
+    @keyframes scanAnim {
+      0% { top: 0; opacity: 0.8; }
+      50% { top: 95%; opacity: 1; }
+      100% { top: 0; opacity: 0.8; }
+    }
+    .retina-mock {
+      width: 110px;
+      height: 110px;
+      border-radius: 50%;
+      border: 2px solid rgba(236, 72, 153, 0.6);
+      background: radial-gradient(circle, #f43f5e 10%, #881337 50%, #4c0519 100%);
+      box-shadow: 0 0 20px rgba(244, 63, 94, 0.4);
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      width: 100%;
+      background: linear-gradient(135deg, #ec4899, #be185d);
+      color: #fff;
+      font-weight: 600;
+      font-size: 14px;
+      padding: 12px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: transform 0.15s;
+    }
+    .btn:active { transform: scale(0.98); }
+    .metric-gauge {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 14px;
+      padding: 10px 14px;
+      background: rgba(255, 255, 255, 0.03);
+      border-radius: 8px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="badge">Edge AI &amp; Biomedical Prototype</div>
+    <h1>E-Eye Screening Concept</h1>
+    <p class="subtitle">CNN-MLP hybrid architecture planned for point-of-care Raspberry Pi and Flask offline screening.</p>
+
+    <div class="grid">
+      <div class="card">
+        <h2 style="font-size: 18px; margin-bottom: 16px;">Retinal Inference Simulation</h2>
+        <div class="scan-box">
+          <div class="scan-line"></div>
+          <div class="retina-mock"></div>
+        </div>
+        <button class="btn" onclick="runInference()">Analyze Retinal Frame</button>
+      </div>
+
+      <div class="card">
+        <h2 style="font-size: 18px; margin-bottom: 16px;">Model Confidence Diagnostics</h2>
+        <div class="metric-gauge">
+          <span>Normal / Healthy Retina</span>
+          <strong id="confNormal" style="color: #34d399;">94.2%</strong>
+        </div>
+        <div class="metric-gauge">
+          <span>Mild Non-Proliferative Risk</span>
+          <strong id="confMild" style="color: #fbbf24;">4.6%</strong>
+        </div>
+        <div class="metric-gauge">
+          <span>Macular Anomaly Indicator</span>
+          <strong id="confAnomaly" style="color: #f87171;">1.2%</strong>
+        </div>
+
+        <div style="margin-top: 24px; padding: 14px; background: rgba(236, 72, 153, 0.08); border-radius: 8px; border: 1px solid rgba(236, 72, 153, 0.2);">
+          <div style="font-size: 12px; font-weight: 700; color: #f472b6; margin-bottom: 4px;">SYSTEM ARCHITECTURE</div>
+          <p style="font-size: 13px; color: var(--muted);">
+            Image capture &rarr; CLAHE enhancement &rarr; CNN spatial feature embedding &rarr; MLP classification &rarr; Lightweight local Flask JSON output.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function runInference() {
+      const norm = (91 + Math.random() * 6).toFixed(1);
+      const mild = (Math.random() * 5).toFixed(1);
+      const anom = (100 - Number(norm) - Number(mild)).toFixed(1);
+      document.getElementById('confNormal').textContent = norm + '%';
+      document.getElementById('confMild').textContent = mild + '%';
+      document.getElementById('confAnomaly').textContent = anom + '%';
+    }
+  </script>
+</body>
+</html>

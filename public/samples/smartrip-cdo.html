@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SmartTripCDO — Static RAG Travel Itinerary Assistant</title>
+  <style>
+    :root {
+      --bg: #07090e;
+      --card: rgba(18, 24, 38, 0.7);
+      --border: rgba(255, 255, 255, 0.1);
+      --accent: #0ea5e9;
+      --accent-glow: rgba(14, 165, 233, 0.25);
+      --text: #f1f5f9;
+      --muted: #94a3b8;
+      --font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Inter, sans-serif;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font);
+      line-height: 1.6;
+      padding: 32px 24px;
+      min-height: 100vh;
+    }
+    .container { max-width: 960px; margin: 0 auto; }
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      background: rgba(14, 165, 233, 0.15);
+      color: #7dd3fc;
+      border: 1px solid rgba(14, 165, 233, 0.3);
+      margin-bottom: 12px;
+    }
+    h1 { font-size: 32px; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 8px; }
+    p.subtitle { color: var(--muted); font-size: 16px; margin-bottom: 28px; }
+    .grid { display: grid; grid-template-columns: 1fr 1.2fr; gap: 24px; }
+    @media (max-width: 768px) { .grid { grid-template-columns: 1fr; } }
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 24px;
+      backdrop-filter: blur(16px);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+    }
+    .card h2 { font-size: 18px; margin-bottom: 16px; }
+    .form-group { margin-bottom: 16px; }
+    label { display: block; font-size: 13px; font-weight: 500; color: var(--muted); margin-bottom: 6px; }
+    select, input[type="range"] {
+      width: 100%;
+      background: rgba(15, 23, 42, 0.8);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 10px 14px;
+      color: #fff;
+      font-size: 14px;
+      outline: none;
+    }
+    .budget-display { font-size: 20px; font-weight: 700; color: var(--accent); margin-bottom: 8px; font-variant-numeric: tabular-nums; }
+    .chip-group { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 16px; }
+    .chip {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 8px 14px;
+      font-size: 13px;
+      cursor: pointer;
+      user-select: none;
+      transition: background 0.2s, border-color 0.2s;
+    }
+    .chip.active { background: rgba(14, 165, 233, 0.2); border-color: var(--accent); color: #38bdf8; }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      width: 100%;
+      background: linear-gradient(135deg, #0ea5e9, #0284c7);
+      color: #fff;
+      font-weight: 600;
+      font-size: 14px;
+      padding: 12px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: transform 0.15s, opacity 0.2s;
+    }
+    .btn:active { transform: scale(0.98); }
+    .itinerary-list { display: flex; flex-direction: column; gap: 12px; margin-top: 16px; }
+    .itinerary-item {
+      background: rgba(255, 255, 255, 0.03);
+      border-left: 3px solid var(--accent);
+      border-radius: 0 8px 8px 0;
+      padding: 12px 16px;
+    }
+    .itinerary-time { font-size: 11px; text-transform: uppercase; color: var(--accent); font-weight: 700; }
+    .itinerary-title { font-size: 15px; font-weight: 600; margin: 2px 0; }
+    .itinerary-desc { font-size: 13px; color: var(--muted); }
+    .actions { display: flex; gap: 12px; margin-top: 24px; }
+    .link-btn {
+      padding: 10px 18px;
+      border-radius: 8px;
+      font-size: 13px;
+      text-decoration: none;
+      font-weight: 500;
+      background: rgba(255, 255, 255, 0.06);
+      color: #fff;
+      border: 1px solid var(--border);
+      transition: background 0.2s;
+    }
+    .link-btn:hover { background: rgba(255, 255, 255, 0.12); }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="badge">Deployed GenAI Assistant</div>
+    <h1>SmartTripCDO</h1>
+    <p class="subtitle">Grounded travel planner with static RAG and zero hallucination across 47 Cagayan de Oro attractions.</p>
+
+    <div class="grid">
+      <div class="card">
+        <h2>Itinerary Preferences</h2>
+        <div class="form-group">
+          <label>Estimated Budget</label>
+          <div class="budget-display" id="budgetLabel">₱2,500</div>
+          <input type="range" id="budgetRange" min="500" max="8000" step="500" value="2500" oninput="updateBudget(this.value)">
+        </div>
+
+        <div class="form-group">
+          <label>Activities &amp; Interests</label>
+          <div class="chip-group">
+            <span class="chip active" onclick="toggleChip(this)">Nature &amp; River</span>
+            <span class="chip active" onclick="toggleChip(this)">Heritage / Arts</span>
+            <span class="chip" onclick="toggleChip(this)">Cafés &amp; Dining</span>
+            <span class="chip" onclick="toggleChip(this)">Eco Park</span>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="travelers">Travel Party</label>
+          <select id="travelers">
+            <option>Solo Traveler</option>
+            <option selected>Couple / Duo</option>
+            <option>Barkada (3–6)</option>
+            <option>Family Group</option>
+          </select>
+        </div>
+
+        <button class="btn" onclick="generateItinerary()">Generate Grounded Plan</button>
+      </div>
+
+      <div class="card">
+        <h2>Curated Itinerary Output</h2>
+        <div class="itinerary-list" id="itineraryList">
+          <div class="itinerary-item">
+            <div class="itinerary-time">08:30 AM — MORNING HERITAGE</div>
+            <div class="itinerary-title">Gaston Park &amp; Saint Augustine Cathedral</div>
+            <div class="itinerary-desc">Historic Spanish-era core of Cagayan de Oro featuring historical water tower monuments and quiet morning walks.</div>
+          </div>
+          <div class="itinerary-item">
+            <div class="itinerary-time">11:30 AM — LOCAL CUISINE</div>
+            <div class="itinerary-title">Cagayan Riverfront Dining</div>
+            <div class="itinerary-desc">Grounded culinary stop pairing regional Sinuglaw with fresh calamansi beverage along Burgos street.</div>
+          </div>
+          <div class="itinerary-item">
+            <div class="itinerary-time">02:00 PM — ECO-ADVENTURE</div>
+            <div class="itinerary-title">Mapawa Nature Park &amp; Waterfalls</div>
+            <div class="itinerary-desc">Pristine forest trails, natural springs, and gentle river canyoning just 30 minutes from downtown CDO.</div>
+          </div>
+          <div class="itinerary-item">
+            <div class="itinerary-time">06:00 PM — SUNSET VIEW</div>
+            <div class="itinerary-title">High Ridge Overlook</div>
+            <div class="itinerary-desc">Panoramic view of the Cagayan de Oro city lights and coastline during twilight.</div>
+          </div>
+        </div>
+
+        <div class="actions">
+          <a class="link-btn" href="https://kent0625-smartrip-cdo.hf.space" target="_blank" rel="noopener">Open Hugging Face App ↗</a>
+          <a class="link-btn" href="https://github.com/Kent0625/smartrip_cdo" target="_blank" rel="noopener">GitHub Source ↗</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function updateBudget(val) {
+      document.getElementById('budgetLabel').textContent = '₱' + Number(val).toLocaleString();
+    }
+    function toggleChip(el) {
+      el.classList.toggle('active');
+    }
+    function generateItinerary() {
+      const budget = Number(document.getElementById('budgetRange').value);
+      const list = document.getElementById('itineraryList');
+      if (budget < 1500) {
+        list.innerHTML = `
+          <div class="itinerary-item">
+            <div class="itinerary-time">09:00 AM — DOWNTOWN WALKING TOUR</div>
+            <div class="itinerary-title">Plaza Divisoria &amp; City Museum</div>
+            <div class="itinerary-desc">Zero-entry heritage walk exploring the historic water tower museum and monuments.</div>
+          </div>
+          <div class="itinerary-item">
+            <div class="itinerary-time">01:30 PM — URBAN LEISURE</div>
+            <div class="itinerary-title">Vicente de Lara Park &amp; Capitol Grounds</div>
+            <div class="itinerary-desc">Shaded park pavilion with Century Mahogany trees, open public spaces, and food stalls.</div>
+          </div>
+        `;
+      } else {
+        list.innerHTML = `
+          <div class="itinerary-item">
+            <div class="itinerary-time">08:30 AM — MORNING HERITAGE</div>
+            <div class="itinerary-title">Gaston Park &amp; Saint Augustine Cathedral</div>
+            <div class="itinerary-desc">Historic Spanish-era core of CDO with historic monuments and quiet morning walks.</div>
+          </div>
+          <div class="itinerary-item">
+            <div class="itinerary-time">01:30 PM — NATURE TRAIL</div>
+            <div class="itinerary-title">Malasag Eco-Tourism Village</div>
+            <div class="itinerary-desc">Botanical gardens, indigenous Mindanao architectural replicas, and nature outlooks.</div>
+          </div>
+          <div class="itinerary-item">
+            <div class="itinerary-time">05:30 PM — DINNER &amp; OVERLOOK</div>
+            <div class="itinerary-title">High Ridge Sunset Deck</div>
+            <div class="itinerary-desc">Panoramic coastal breeze and dining with a full view of the CDO skyline.</div>
+          </div>
+        `;
+      }
+    }
+  </script>
+</body>
+</html>
