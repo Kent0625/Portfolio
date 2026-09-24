@@ -168,26 +168,27 @@ export default function TestimonialsGrid() {
           </div>
         </div>
 
-        <ul className="tgrid__ledger" role="list">
+        <ul className="tgrid__clients" role="list">
           {CLIENTS.map((c) => {
             const ClientIcon = c.Icon
             return (
-              <li key={c.index} className="tgrid__card">
-                <header className="tgrid__card-head">
-                  <span className="tgrid__medallion" aria-hidden="true">
-                    <ClientIcon size={20} weight="duotone" />
-                  </span>
-                  <div className="tgrid__card-meta">
-                    <span className="tgrid__card-name">{c.name}</span>
-                    <span className="tgrid__card-role">{c.role}</span>
-                  </div>
-                </header>
-                <p className="tgrid__card-daily">{c.daily}</p>
-                <ul className="tgrid__card-work" role="list" aria-label="Focus tags">
-                  {c.work.map((w) => (
-                    <li key={w}>{w}</li>
-                  ))}
-                </ul>
+              <li key={c.index} className="tgrid__client">
+                <span className="tgrid__client-ghost" aria-hidden="true">{c.index}</span>
+                <span className="tgrid__client-mark" aria-hidden="true">
+                  <ClientIcon size={24} weight="duotone" />
+                </span>
+                <div className="tgrid__client-body">
+                  <header className="tgrid__client-head">
+                    <span className="tgrid__client-name">{c.name}</span>
+                    <span className="tgrid__client-role">{c.role}</span>
+                  </header>
+                  <p className="tgrid__client-daily">{c.daily}</p>
+                  <ul className="tgrid__client-tags" role="list" aria-label="Focus tags">
+                    {c.work.map((w) => (
+                      <li key={w} className="tgrid__client-tag">{w}</li>
+                    ))}
+                  </ul>
+                </div>
               </li>
             )
           })}

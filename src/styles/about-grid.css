@@ -8,7 +8,6 @@
 
 @media (min-width: 1100px) {
   .agrid__glass {
-    height: 100%;
     display: grid;
     grid-template-columns: minmax(0, 1.28fr) minmax(280px, 1fr);
     /* Definite row, not the implicit auto one: the illustration is a big

@@ -45,7 +45,7 @@ export const profile: Profile = {
   ],
   displayName: { line1: 'Data Science & ML.', line2: 'From data to decisions.' },
   hero: {
-    body: 'I turn messy datasets into explainable models, useful dashboards, and decision-ready insights for teams and organizations.',
+    body: 'I turn messy datasets into explainable models, useful dashboards, and decision-ready insights.',
     portraitSrc: '/avatar.png',
     portraitAlt: 'Kent John U. Macalam',
   },

@@ -46,6 +46,7 @@
   letter-spacing: var(--ls-display);
   line-height: 1.06;
   color: var(--navy);
+  text-wrap: balance;
 }
 .home__line { display: block; }
 
@@ -71,6 +72,7 @@
 }
 .home__cta svg { color: var(--orange); }
 .home__cta:hover { transform: translateY(-2px); }
+.home__cta:active { transform: translateY(0); }
 
 /* One line, from 1400px up.
    The sentence is 130 characters. Measured against the panel it needs roughly
@@ -123,6 +125,7 @@
   min-width: 0;
   padding: clamp(14px, 2vh, 24px) clamp(14px, 1.4vw, 24px);
   border-radius: calc(var(--radius-card) + 6px);
+  overflow: hidden;
   /* White on the left, cooling to a soft blue on the right - one sweep, so
      the panel reads as a single sheet, not a tinted box. */
   background:

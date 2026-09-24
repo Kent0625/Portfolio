@@ -315,34 +315,29 @@ export default function ProjectsGrid() {
   }, [])
 
   const stack = builds.length > 0 ? (
-    <div className="pbuilds" role="region" aria-label="Featured projects">
-      <div className="pbuilds__head">
-        <span className="pbuilds__eyebrow">Featured Case Studies</span>
-        <h2 className="pbuilds__title">Documented projects with code and models.</h2>
-      </div>
-      <div className="pbuilds__stack">
-        {builds.map((b) => (
-          <button
-            key={b.id}
-            type="button"
-            className="pbuild"
-            data-id={b.id}
-            onClick={(e) => show(b, e.currentTarget)}
-            aria-haspopup="dialog"
-          >
-            <span className="pbuild__top">
-              <span className="pbuild__kicker">{b.kicker}</span>
-              <span className="pbuild__index">{b.index}</span>
-            </span>
-            <span className="pbuild__title">{b.title}</span>
-            <span className="pbuild__desc">{b.desc}</span>
-            <span className="pbuild__foot">
-              <span className="pbuild__cta">Open interactive study</span>
-              <ArrowUpRight size={14} weight="bold" aria-hidden="true" />
-            </span>
-          </button>
-        ))}
-      </div>
+    <div className="bento__stack" role="region" aria-label="Featured projects">
+      {builds.map((b) => (
+        <button
+          key={b.id}
+          type="button"
+          className="bento__card bento__card--build bento__card--btn"
+          data-id={b.id}
+          onClick={(e) => show(b, e.currentTarget)}
+          aria-haspopup="dialog"
+        >
+          <span className="bento__build-plate" aria-hidden="true">
+            <b.Icon size={20} />
+          </span>
+          <span className="bento__build-text">
+            <span className="bento__kicker">{b.kicker}</span>
+            <span className="bento__build-title">{b.title}</span>
+            <span className="bento__build-desc">{b.desc}</span>
+          </span>
+          <span className="bento__build-arrow" aria-hidden="true">
+            <ArrowUpRight size={14} weight="bold" />
+          </span>
+        </button>
+      ))}
     </div>
   ) : null
 

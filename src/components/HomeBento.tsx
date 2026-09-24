@@ -75,7 +75,7 @@ export default function HomeBento() {
     <nav className="bento" aria-label="Explore the portfolio">
       {/* Projects */}
       <Link to="/projects" className="bento__card bento__card--projects">
-        <CardHead Icon={FolderOpen} title="Selected Projects" desc="Predictive ML, statistical analysis, and web assistants." />
+        <CardHead Icon={FolderOpen} title="Selected Projects" desc="Predictive ML, statistical analysis & web assistants" />
         <div className="bento__media bento__reel" aria-hidden="true">
           <div className="bento__reel-track">
             {[...PROJECT_SHOTS, ...PROJECT_SHOTS].map((f, i) => (
@@ -89,7 +89,7 @@ export default function HomeBento() {
 
       {/* About */}
       <Link to="/about" className="bento__card bento__card--about">
-        <CardHead Icon={User} title="About Kent" desc="BS Data Science practitioner in Cagayan de Oro, Philippines." />
+        <CardHead Icon={User} title="About Kent" desc="BS Data Science · Cagayan de Oro, Philippines" />
         <div className="bento__media bento__fan" aria-hidden="true">
           {PHOTOS.map((src, i) => (
             <span key={i} className="bento__photo" style={{ ['--i' as string]: i }}>
@@ -101,7 +101,7 @@ export default function HomeBento() {
 
       {/* AI builds */}
       <Link to="/projects" className="bento__card bento__card--ai">
-        <CardHead Icon={Robot} title="Data &amp; ML Systems" desc="Supervised models, bootstrap estimators, and RAG apps." />
+        <CardHead Icon={Robot} title="Data &amp; ML Systems" desc="Supervised models, bootstrap estimators & RAG apps" />
         <div className="bento__media bento__chips" aria-hidden="true">
           {toolRows.map((row, r) => (
             <div key={r} className="bento__chip-row" data-dir={r ? 'right' : 'left'}>
@@ -120,7 +120,7 @@ export default function HomeBento() {
 
       {/* Credentials */}
       <Link to="/about" className="bento__card bento__card--creds">
-        <CardHead Icon={Medal} title="Credentials" desc="BS Data Science · Machine Learning &amp; AI Practitioner." />
+        <CardHead Icon={Medal} title="Credentials" desc="BS Data Science · Machine Learning &amp; AI" />
         <div className="bento__media bento__badge" aria-hidden="true">
           <span className="bento__badge-ring">
             <SealCheck size={48} weight="fill" color="#38bdf8" />
@@ -134,7 +134,7 @@ export default function HomeBento() {
 
       {/* Services */}
       <Link to="/services" className="bento__card bento__card--services">
-        <CardHead Icon={Stack} title="Capabilities" desc="Data pipelines, predictive modeling, and decision support." />
+        <CardHead Icon={Stack} title="Capabilities" desc="Data pipelines, predictive modeling & decision support" />
         <ul className="bento__media bento__offers" role="list">
           {OFFERS.map(({ Icon, title, note }, i) => (
             <li key={title} className="bento__offer" style={{ '--i': i } as React.CSSProperties}>
@@ -155,7 +155,7 @@ export default function HomeBento() {
 
       {/* Testimonials */}
       <Link to="/testimonials" className="bento__card bento__card--quotes">
-        <CardHead Icon={Quotes} title="Endorsements" desc="Research evaluations, peer feedback, and reviews." />
+        <CardHead Icon={Quotes} title="Endorsements" desc="Faculty evaluations, peer feedback & project reviews" />
         <div className="bento__media bento__reviews" aria-hidden="true">
           <div className="bento__reviews-track">
             {[...CLIENTS, ...CLIENTS].map((c, i) => (

@@ -46,9 +46,13 @@
         try {
           document.documentElement.dataset.theme =
             localStorage.getItem('theme') === 'light' ? 'light' : 'dark';
+          document.documentElement.style.colorScheme = document.documentElement.dataset.theme;
         } catch (e) {
           document.documentElement.dataset.theme = 'dark';
+          document.documentElement.style.colorScheme = 'dark';
         }
+        var tc = document.querySelector('meta[name="theme-color"]');
+        if (tc) tc.setAttribute('content', document.documentElement.dataset.theme === 'dark' ? '#070B14' : '#F4F4ED');
       })();
     </script>
   </head>

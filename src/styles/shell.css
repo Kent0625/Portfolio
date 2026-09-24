@@ -84,6 +84,7 @@
   letter-spacing: var(--ls-display);
   line-height: var(--lh-heading);
   color: var(--navy);
+  text-wrap: balance;
 }
 
 .view__lede {

@@ -137,7 +137,7 @@ export default function ContactGrid() {
 
               <label className="cgrid__field">
                 <span className="cgrid__label">Email</span>
-                <input type="email" name="email" autoComplete="email" required maxLength={MAX_EMAIL} placeholder="you@example.com" />
+                <input type="email" name="email" autoComplete="email" required maxLength={MAX_EMAIL} placeholder="you@example.com" spellCheck={false} />
               </label>
 
               <label className="cgrid__field cgrid__field--grow">
@@ -160,7 +160,7 @@ export default function ContactGrid() {
                   <span className="cgrid__submit-plane" aria-hidden="true">
                     <PaperPlaneTilt size={17} weight="fill" />
                   </span>
-                  <span className="cgrid__submit-label">{busy ? 'Sending' : 'Send message'}</span>
+                  <span className="cgrid__submit-label">{busy ? 'Sending…' : 'Send message'}</span>
                   <ArrowUpRight className="cgrid__submit-arrow" size={15} weight="bold" aria-hidden="true" />
                 </button>
                 {status.kind === 'error' ? (

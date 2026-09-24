@@ -29,7 +29,7 @@ html {
 }
 
 body {
-  font-family: var(--font-display);
+  font-family: var(--font-body);
   font-size: var(--fs-body);
   line-height: var(--lh-body);
   background: var(--cream);
@@ -38,6 +38,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
   overflow-x: hidden;
+  /* Utility for numbers: use font-variant-numeric: tabular-nums where needed */
   /* Fade the page in on every load. On first visit this plays behind
      the intro overlay (invisible). On refresh it's the entrance animation. */
   animation: page-fadein 0.45s cubic-bezier(0.22, 1, 0.36, 1) both;
@@ -57,6 +58,11 @@ img, svg {
   max-width: 100%;
 }
 
+a, button {
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+
 a {
   color: inherit;
   text-decoration: none;
@@ -74,6 +80,10 @@ button {
   outline: 2px solid var(--orange);
   outline-offset: 3px;
   border-radius: 4px;
+}
+
+[id] {
+  scroll-margin-top: 96px;
 }
 
 /* Skip link - hidden until focused */
