@@ -1,6 +1,6 @@
 # Kent John U. Macalam — Data Science Portfolio
 
-[View the live portfolio](https://kent-macalam-portfolio.onrender.com/)
+[View the live portfolio](https://portfolio-two-black-84.vercel.app/)
 
 ## About
 
