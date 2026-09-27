@@ -36,10 +36,10 @@ export function HomeStats() {
 
 const TILES = [
   { n: '01', label: 'Projects', to: '/projects', title: 'Selected Projects', desc: 'Predictive ML, analytics & RAG.', img: '/assets/projects/legislative-ml-pubmat.png' },
-  { n: '02', label: 'Services', to: '/services', title: 'Data Capabilities', desc: 'Pipelines, modeling & dashboards.', Icon: Stack, dark: true },
+  { n: '02', label: 'Capabilities', to: '/services', title: 'Data Capabilities', desc: 'Pipelines, modeling & dashboards.', Icon: Stack, dark: true },
   { n: '03', label: 'Showcase', to: '/showcase', title: 'SmartTripCDO', desc: 'Grounded static RAG travel app.', Icon: Coffee, dark: true, accent: true },
-  { n: '04', label: 'Endorsements', to: '/testimonials', title: 'Reviews & Feedback', desc: 'Advisor & collaborator feedback.', img: '/assets/projects/coffee-income-poster.png' },
-  { n: '05', label: 'About', to: '/about', title: `Hi, I’m ${profile.firstName}.`, desc: 'BS Data Science practitioner.', img: profile.avatarSrc },
+  { n: '04', label: 'Highlights', to: '/testimonials', title: 'Project Highlights', desc: 'Capstone modeling & research.', img: '/assets/projects/coffee-income-poster.png' },
+  { n: '05', label: 'About', to: '/about', title: `Hi, I’m ${profile.firstName}.`, desc: 'Seeking internships/junior roles.', img: profile.avatarSrc },
 ] as const
 
 export function HomeExplore() {
