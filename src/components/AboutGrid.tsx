@@ -1,5 +1,7 @@
+import { useState, useEffect, useRef } from 'react'
 import type { CSSProperties } from 'react'
-import { ArrowUpRight, MapPin, GraduationCap } from '@/components/slab'
+import { createPortal } from 'react-dom'
+import { ArrowUpRight, MapPin, GraduationCap, X } from '@/components/slab'
 import { profile } from '@/data/profile'
 
 /**
@@ -18,6 +20,13 @@ type Capability = {
   title: string
   marks: { src: string; name: string }[]
 }
+
+const CERTS = [
+  { id: 'ai', title: 'Google AI Essentials', year: '2025', pdf: '/assets/certificates/google-ai-essentials.pdf' },
+  { id: 'data1', title: 'Foundations: Data, Data, Everywhere', year: '2026', pdf: '/assets/certificates/foundations-data.pdf' },
+  { id: 'data2', title: 'Ask Questions to Make Data-Driven Decisions', year: '2026', pdf: '/assets/certificates/ask-questions.pdf' },
+  { id: 'data3', title: 'Prepare Data for Exploration', year: '2026', pdf: '/assets/certificates/prepare-data.pdf' }
+]
 
 const CAPABILITIES: Capability[] = [
   {
@@ -42,7 +51,62 @@ const CAPABILITIES: Capability[] = [
   },
 ]
 
+function CertModal({ cert, onClose }: { cert: typeof CERTS[0]; onClose: () => void }) {
+  const closeRef = useRef<HTMLButtonElement>(null)
+
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') onClose()
+    }
+    document.addEventListener('keydown', onKey)
+    document.body.style.overflow = 'hidden'
+    requestAnimationFrame(() => closeRef.current?.focus())
+    return () => {
+      document.removeEventListener('keydown', onKey)
+      document.body.style.overflow = ''
+    }
+  }, [onClose])
+
+  return createPortal(
+    <div
+      className="pmodal"
+      role="dialog"
+      aria-modal="true"
+      aria-label={cert.title}
+      onClick={(e) => {
+        if (e.target === e.currentTarget) onClose()
+      }}
+    >
+      <button ref={closeRef} type="button" className="pmodal__close" onClick={onClose} aria-label="Close dialog">
+        <X size={18} weight="bold" />
+      </button>
+      <div className="pmodal__stage">
+        <div className="ppanel ppanel--frame">
+          <div className="ppanel__bar">
+            <span className="ppanel__dots" aria-hidden="true">
+              <i />
+              <i />
+              <i />
+            </span>
+            <span className="ppanel__url">
+              <span className="ppanel__url-host">Coursera Certificate</span>
+              <span className="ppanel__url-path"> / {cert.title}</span>
+            </span>
+          </div>
+          <div className="ppanel__stage" style={{ background: '#333' }}>
+            <iframe src={cert.pdf} title={cert.title} className="ppanel__iframe is-ready" style={{ opacity: 1, width: '100%', height: '100%' }} />
+          </div>
+        </div>
+      </div>
+    </div>,
+    document.body,
+  )
+}
+
 export default function AboutGrid() {
+  const [activeCert, setActiveCert] = useState<string | null>(null)
+  const activePdf = CERTS.find(c => c.id === activeCert)
+
   return (
     <>
     <section className="pgrid agrid" aria-labelledby="about-title">
@@ -143,38 +207,30 @@ export default function AboutGrid() {
         <h2 className="credentials__headline" id="credentials-title">Professional Training &amp; Credentials</h2>
       </header>
       <div className="credcard">
-        <ul className="credcard__list" role="list">
-          <li className="cred">
-            <span className="cred__plate" aria-hidden="true">
-              <img src="/icons/google-logo.svg" alt="Google" width="20" height="20" loading="lazy" decoding="async" />
-            </span>
-            <span className="cred__label">Google AI Essentials</span>
-            <span className="cred__index">2025</span>
-          </li>
-          <li className="cred">
-            <span className="cred__plate" aria-hidden="true">
-              <img src="/icons/google-logo.svg" alt="Google" width="20" height="20" loading="lazy" decoding="async" />
-            </span>
-            <span className="cred__label">Foundations: Data, Data, Everywhere</span>
-            <span className="cred__index">2026</span>
-          </li>
-          <li className="cred">
-            <span className="cred__plate" aria-hidden="true">
-              <img src="/icons/google-logo.svg" alt="Google" width="20" height="20" loading="lazy" decoding="async" />
-            </span>
-            <span className="cred__label">Ask Questions to Make Data-Driven Decisions</span>
-            <span className="cred__index">2026</span>
-          </li>
-          <li className="cred">
-            <span className="cred__plate" aria-hidden="true">
-              <img src="/icons/google-logo.svg" alt="Google" width="20" height="20" loading="lazy" decoding="async" />
-            </span>
-            <span className="cred__label">Prepare Data for Exploration</span>
-            <span className="cred__index">2026</span>
-          </li>
-        </ul>
+        <div className="credcard__list">
+          {CERTS.map(c => (
+            <button 
+              key={c.id}
+              type="button" 
+              className="cred" 
+              onClick={() => setActiveCert(c.id)}
+              style={{ width: '100%', textAlign: 'left', background: 'none', border: 'none', font: 'inherit', cursor: 'pointer' }}
+              aria-haspopup="dialog"
+            >
+              <span className="cred__plate" aria-hidden="true">
+                <img src="/icons/google-logo.svg" alt="Google" width="20" height="20" loading="lazy" decoding="async" />
+              </span>
+              <span className="cred__label">{c.title}</span>
+              <span className="cred__index">{c.year}</span>
+            </button>
+          ))}
+        </div>
       </div>
     </section>
+
+    {activePdf && (
+      <CertModal cert={activePdf} onClose={() => setActiveCert(null)} />
+    )}
     </>
   )
 }
