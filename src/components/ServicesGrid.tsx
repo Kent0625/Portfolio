@@ -134,12 +134,12 @@ export default function ServicesGrid() {
   return (
     <section className="pgrid sgrid" aria-labelledby="services-title">
       <header className="pgrid__head">
-        <span className="pgrid__eyebrow">Services</span>
+        <span className="pgrid__eyebrow">Core Competencies</span>
         <h1 className="pgrid__title" id="services-title">
-          Data science and machine learning services.
+          Technical capabilities and data skills.
         </h1>
         <p className="pgrid__lede">
-          Focused analytics, reproducible machine learning prototypes, and decision support dashboards.
+          Focused analytics, reproducible machine learning prototypes, and decision support dashboards ready for team collaboration.
         </p>
       </header>
 
@@ -182,7 +182,7 @@ export default function ServicesGrid() {
         <div className="sgrid__offers">
           <div className="sgrid__offers-head">
             <h2 className="sgrid__offers-title">Selected Capabilities</h2>
-            <p className="sgrid__offers-sub">Tailored for research labs, teams, and analytics projects.</p>
+            <p className="sgrid__offers-sub">Skills and methodologies I bring to research labs, tech teams, and analytics projects.</p>
           </div>
           <ul className="bento sgrid__services" role="list">
             {SERVICES.map((s) => (

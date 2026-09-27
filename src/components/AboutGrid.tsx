@@ -123,8 +123,8 @@ export default function AboutGrid() {
       <div className="home__glass agrid__glass">
         <div className="agrid__copy">
           <p className="agrid__lead">
-            I build machine learning prototypes, statistical estimators, and data storytelling systems.
-            <span> A structured, disciplined workflow from ingestion to stakeholder decision.</span>
+            Recent Data Science graduate passionate about statistical inference, machine learning, and building data-driven tools.
+            <span> Actively seeking internships and entry-level roles to contribute to real-world data pipelines and predictive modeling.</span>
           </p>
 
           <p className="agrid__note">

@@ -33,9 +33,9 @@ const OFFERS = [
 ] as const
 
 const CLIENTS = [
-  { name: 'Data Science Faculty', role: 'Research Advisor', work: 'XGBoost · Senate Data · Macro F1' },
-  { name: 'AI Hackathon Committee', role: 'Technical Evaluator', work: 'Streamlit · RAG · Hugging Face' },
-  { name: 'Economics Researcher', role: 'Statistical Collaborator', work: 'Bootstrap · Resampling · Risk' },
+  { name: 'Legislative Status', role: 'Machine Learning Course', work: 'XGBoost · Senate Data · Macro F1' },
+  { name: 'SmartTripCDO', role: 'DS Elective (Gen AI)', work: 'Streamlit · RAG · Hugging Face' },
+  { name: 'Farmer Income Risk', role: 'Computational Stats Course', work: 'Bootstrap · Resampling · Risk' },
 ]
 
 const PHOTOS = [profile.avatarSrc, profile.avatarSrc, profile.avatarSrc]
@@ -75,7 +75,7 @@ export default function HomeBento() {
     <nav className="bento" aria-label="Explore the portfolio">
       {/* Projects */}
       <Link to="/projects" className="bento__card bento__card--projects">
-        <CardHead Icon={FolderOpen} title="Selected Projects" desc="Predictive ML, statistical analysis & web assistants" />
+        <CardHead Icon={FolderOpen} title="Selected Projects" desc="Predictive ML, statistical analysis & coursework" />
         <div className="bento__media bento__reel" aria-hidden="true">
           <div className="bento__reel-track">
             {[...PROJECT_SHOTS, ...PROJECT_SHOTS].map((f, i) => (
@@ -89,7 +89,7 @@ export default function HomeBento() {
 
       {/* About */}
       <Link to="/about" className="bento__card bento__card--about">
-        <CardHead Icon={User} title="About Kent" desc="BS Data Science · Cagayan de Oro, Philippines" />
+        <CardHead Icon={User} title="About Kent" desc="BS Data Science graduate seeking internship/junior roles" />
         <div className="bento__media bento__fan" aria-hidden="true">
           {PHOTOS.map((src, i) => (
             <span key={i} className="bento__photo" style={{ ['--i' as string]: i }}>
@@ -120,7 +120,7 @@ export default function HomeBento() {
 
       {/* Credentials */}
       <Link to="/about" className="bento__card bento__card--creds">
-        <CardHead Icon={Medal} title="Credentials" desc="BS Data Science · Machine Learning &amp; AI" />
+        <CardHead Icon={Medal} title="Credentials" desc="Google Career Certificates &amp; BS Data Science" />
         <div className="bento__media bento__badge" aria-hidden="true">
           <span className="bento__badge-ring">
             <SealCheck size={48} weight="fill" color="#38bdf8" />
@@ -134,7 +134,7 @@ export default function HomeBento() {
 
       {/* Services */}
       <Link to="/services" className="bento__card bento__card--services">
-        <CardHead Icon={Stack} title="Capabilities" desc="Data pipelines, predictive modeling & decision support" />
+        <CardHead Icon={Stack} title="Technical Capabilities" desc="Data pipelines, predictive modeling & decision support" />
         <ul className="bento__media bento__offers" role="list">
           {OFFERS.map(({ Icon, title, note }, i) => (
             <li key={title} className="bento__offer" style={{ '--i': i } as React.CSSProperties}>
@@ -155,7 +155,7 @@ export default function HomeBento() {
 
       {/* Testimonials */}
       <Link to="/testimonials" className="bento__card bento__card--quotes">
-        <CardHead Icon={Quotes} title="Endorsements" desc="Faculty evaluations, peer feedback & project reviews" />
+        <CardHead Icon={Quotes} title="Project Highlights" desc="Capstone modeling, hackathons & research" />
         <div className="bento__media bento__reviews" aria-hidden="true">
           <div className="bento__reviews-track">
             {[...CLIENTS, ...CLIENTS].map((c, i) => (

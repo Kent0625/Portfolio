@@ -41,7 +41,7 @@ export default function ContactGrid() {
       <header className="pgrid__head">
         <span className="pgrid__eyebrow">FAQs / Contact</span>
         <h1 className="pgrid__title" id="contact-title">
-          Available for Data Science internships and ML projects.
+          Seeking Data Science internships and junior ML roles.
         </h1>
         <p className="pgrid__lede">
           Let’s connect regarding internships, supervised predictive modeling, or project deliverables. I respond within 24 hours.
