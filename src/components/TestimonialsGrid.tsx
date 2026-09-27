@@ -46,31 +46,31 @@ type Client = {
   Icon: Icon
 }
 
-const CLIENTS: Client[] = [
+const HIGHLIGHTS: Client[] = [
   {
     index: '01',
-    name: 'Academic Research Advisor',
-    role: 'DATA SCIENCE FACULTY',
+    name: 'Predicting Legislative Status',
+    role: 'MACHINE LEARNING CAPSTONE',
     daily:
-      'Kent showed exceptional discipline in preprocessing 7,352 Senate bills, balancing skewed classes, and evaluating XGBoost with holdout macro F1 rather than misleading raw accuracy.',
+      'Applied disciplined preprocessing to 7,352 Senate bills, balanced heavily skewed target classes, and evaluated XGBoost models with holdout macro F1 rather than misleading raw accuracy.',
     work: ['ML Modeling', 'XGBoost', 'Senate Data'],
     Icon: Gauge,
   },
   {
     index: '02',
-    name: 'Regional Hackathon Evaluator',
-    role: 'GENAI REVIEW COMMITTEE',
+    name: 'SmartTripCDO Tourism Assistant',
+    role: 'AI HACKATHON ENTRY',
     daily:
-      'SmartTripCDO solved the core problem of hallucinations by combining static retrieval with 47 verified Cagayan de Oro points of interest, running entirely on a free Hugging Face space.',
+      'Engineered a localized retrieval system solving the core problem of hallucinations by combining static RAG with 47 verified Cagayan de Oro points of interest, running on a free Hugging Face space.',
     work: ['Static RAG', 'Streamlit', 'Zero-Cost'],
     Icon: Robot,
   },
   {
     index: '03',
-    name: 'Agricultural Economics Partner',
-    role: 'STATISTICAL RESEARCHER',
+    name: 'Bukidnon Farmer Income Risk',
+    role: 'STATISTICAL RESEARCH PROJECT',
     daily:
-      'The BCa bootstrap confidence intervals for Bukidnon coffee farmers surfaced the severe left-tail income risk that a simple sample mean had concealed from policymakers.',
+      'Utilized BCa bootstrap confidence intervals to surface the severe left-tail income risk of Bukidnon coffee farmers that a simple sample mean had previously concealed from policymakers.',
     work: ['R Bootstrap', 'BCa Intervals', 'Policy Insights'],
     Icon: Code,
   },
@@ -89,12 +89,12 @@ export default function TestimonialsGrid() {
   return (
     <section className="pgrid tgrid" aria-labelledby="testimonials-title">
       <header className="pgrid__head">
-        <span className="pgrid__eyebrow">Endorsements</span>
+        <span className="pgrid__eyebrow">Project Highlights</span>
         <h1 className="pgrid__title" id="testimonials-title">
-          Evaluations, peer reviews, and academic endorsements.
+          Undergraduate research, capstones, and hackathons.
         </h1>
         <p className="pgrid__lede">
-          What research advisors, collaborators, and evaluators say about my data modeling, code quality, and prototypes.
+          Key data modeling, statistical inference, and machine learning prototypes developed during my data science coursework and extracurriculars.
         </p>
       </header>
 
@@ -169,7 +169,7 @@ export default function TestimonialsGrid() {
         </div>
 
         <ul className="tgrid__clients" role="list">
-          {CLIENTS.map((c) => {
+          {HIGHLIGHTS.map((c) => {
             const ClientIcon = c.Icon
             return (
               <li key={c.index} className="tgrid__client">
