@@ -44,6 +44,7 @@ const CAPABILITIES: Capability[] = [
 
 export default function AboutGrid() {
   return (
+    <>
     <section className="pgrid agrid" aria-labelledby="about-title">
       <header className="pgrid__head">
         <span className="pgrid__eyebrow">About</span>
@@ -135,5 +136,45 @@ export default function AboutGrid() {
         </div>
       </div>
     </section>
+
+    <section className="credentials" aria-labelledby="credentials-title">
+      <header className="credentials__head">
+        <span className="credentials__eyebrow">Certifications</span>
+        <h2 className="credentials__headline" id="credentials-title">Professional Training &amp; Credentials</h2>
+      </header>
+      <div className="credcard">
+        <ul className="credcard__list" role="list">
+          <li className="cred">
+            <span className="cred__plate" aria-hidden="true">
+              <img src="/icons/google-logo.svg" alt="Google" width="20" height="20" loading="lazy" decoding="async" />
+            </span>
+            <span className="cred__label">Google AI Essentials</span>
+            <span className="cred__index">2025</span>
+          </li>
+          <li className="cred">
+            <span className="cred__plate" aria-hidden="true">
+              <img src="/icons/google-logo.svg" alt="Google" width="20" height="20" loading="lazy" decoding="async" />
+            </span>
+            <span className="cred__label">Foundations: Data, Data, Everywhere</span>
+            <span className="cred__index">2026</span>
+          </li>
+          <li className="cred">
+            <span className="cred__plate" aria-hidden="true">
+              <img src="/icons/google-logo.svg" alt="Google" width="20" height="20" loading="lazy" decoding="async" />
+            </span>
+            <span className="cred__label">Ask Questions to Make Data-Driven Decisions</span>
+            <span className="cred__index">2026</span>
+          </li>
+          <li className="cred">
+            <span className="cred__plate" aria-hidden="true">
+              <img src="/icons/google-logo.svg" alt="Google" width="20" height="20" loading="lazy" decoding="async" />
+            </span>
+            <span className="cred__label">Prepare Data for Exploration</span>
+            <span className="cred__index">2026</span>
+          </li>
+        </ul>
+      </div>
+    </section>
+    </>
   )
 }
