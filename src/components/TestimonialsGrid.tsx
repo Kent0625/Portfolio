@@ -50,7 +50,7 @@ const HIGHLIGHTS: Client[] = [
   {
     index: '01',
     name: 'Predicting Legislative Status',
-    role: 'MACHINE LEARNING CAPSTONE',
+    role: 'MACHINE LEARNING COURSE',
     daily:
       'Applied disciplined preprocessing to 7,352 Senate bills, balanced heavily skewed target classes, and evaluated XGBoost models with holdout macro F1 rather than misleading raw accuracy.',
     work: ['ML Modeling', 'XGBoost', 'Senate Data'],
@@ -59,7 +59,7 @@ const HIGHLIGHTS: Client[] = [
   {
     index: '02',
     name: 'SmartTripCDO Tourism Assistant',
-    role: 'AI HACKATHON ENTRY',
+    role: 'DS ELECTIVE (GEN AI)',
     daily:
       'Engineered a localized retrieval system solving the core problem of hallucinations by combining static RAG with 47 verified Cagayan de Oro points of interest, running on a free Hugging Face space.',
     work: ['Static RAG', 'Streamlit', 'Zero-Cost'],
@@ -68,7 +68,7 @@ const HIGHLIGHTS: Client[] = [
   {
     index: '03',
     name: 'Bukidnon Farmer Income Risk',
-    role: 'STATISTICAL RESEARCH PROJECT',
+    role: 'COMPUTATIONAL STATS COURSE',
     daily:
       'Utilized BCa bootstrap confidence intervals to surface the severe left-tail income risk of Bukidnon coffee farmers that a simple sample mean had previously concealed from policymakers.',
     work: ['R Bootstrap', 'BCa Intervals', 'Policy Insights'],
